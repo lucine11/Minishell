@@ -13,3 +13,4 @@ typedef struct			s_command
 	int					return_value;
 	int					pipe_fd[2];
 }						t_command;
+#endif
