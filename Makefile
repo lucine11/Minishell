@@ -7,7 +7,7 @@ OBJ_DIR	:= obj/
 
 SRC		:=	main.c\
 			parsing.c\
-			tokens.c\
+			#tokens.c\
 
 OBJ		:= $(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC)))
 
