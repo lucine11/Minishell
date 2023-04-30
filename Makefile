@@ -1,40 +1,40 @@
+NAME	:= minishell
+CC		:= cc
+CFLAGS	:= -I src/ -I lib/ -g3 #-fsanitize=address #-Wall -Werror -Wextra
+LDFLAGS	:=
+VPATH	:= src/ src/parsing/ src/env/
+OBJ_DIR	:= obj/
 
-SHELL		= /bin/sh
+SRC		:=	main.c\
+			parsing.c\
+			tokens.c\
 
-NAME		= minishell
+OBJ		:= $(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC)))
 
-SRCS		=
+LIBFT	:= libft
 
-OBJS		= ${SRCS:.c=.o}
+all: $(NAME)
 
-CC			= cc
-RM			= rm -f
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS)
 
-LIBFT_FLAGS	= -Llibft -lft
+$(OBJ_DIR): 
+	mkdir obj
 
-CFLAGS		= -Wall -Wextra -Werror -g3 -Isrcs
+$(OBJ_DIR)%.o: %.c 
+	$(CC) $(CFLAGS) $< -c -o $@
 
-INCLUDES	= -I libft
-
-all:	${NAME}
-
-.c.o:
-		${CC} ${INCLUDES} ${CFLAGS} -c $< -o $@
-
-$(NAME): ${OBJS}
-		make -C libft
-		${CC} ${OBJS} ${LIBFT_FLAGS} -o ${NAME}
+$(LIBFT):
+	make -C ./libft
 
 clean:
-		make -C libft clean
-		${RM} ${OBJS}
+	make -C ./libft clean
+	rm -rf $(OBJ_DIR)
 
+fclean: clean
+	make -C ./libft fclean
+	rm -f $(NAME)
 
-fclean:	clean
-		rm -f libft/libft.a
-		${RM} ${NAME}
+re: fclean all
 
-re:		fclean
-	make all
-
-.PHONY : all clean fclean re
+.PHONY: all, clean, fclean, re, libft

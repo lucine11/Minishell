@@ -1,20 +1,29 @@
 #ifndef MINISHELL_H
-#define MINISHELL_H
+# define MINISHELL_H
 
-#include <stdbool.h>
+# include "../libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+//# include <readline/readline.h>
 
-#define MAX_ARGS 10
+typedef struct s_simple_command
+{
+	int	no_avail_args;
+	int	no_args;
+	char **arguments;
+	
+}				t_simple_command;
 
-typedef struct command {
-    char **args;
-    bool background;
-    char *input_file;
-    char *output_file;
-    bool append;
-    struct command *next;
-} command_t;
-
-command_t *parse_input(char *input);
-void free_command(command_t *cmd);
+typedef struct s_command
+{
+	int						no_avail_commands;
+	int						no_commands;
+	t_simple_command		**simple_commands;
+	char					*outfile;
+	char					*infile;
+	char					*errfile;
+	int						background;
+	t_simple_command	*current_s_command;
+}				t_command;
 
 #endif
