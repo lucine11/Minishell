@@ -3,8 +3,6 @@
 // int	main(int argc, char **argv, char **envp)
 // {
 // 	char	*line;
-
-
 // 	line = readline("say something: ");
 // 	// ft_printf("%s\n", line);
 	
