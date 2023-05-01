@@ -5,7 +5,6 @@ LDFLAGS	:=
 VPATH	:= src/ src/parsing/ src/env/
 OBJ_DIR	:= obj/
 
-
 SRC		:=	main.c\
 			parsing.c\
 			#tokens.c\
