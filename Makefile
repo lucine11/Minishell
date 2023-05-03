@@ -1,5 +1,5 @@
 NAME	:= minishell
-CC		:= cc
+CC	:= cc
 CFLAGS	:= -I src/ -I lib/ -g3 #-fsanitize=address #-Wall -Werror -Wextra
 LDFLAGS	:=
 VPATH	:= src/ src/parsing/ src/env/
