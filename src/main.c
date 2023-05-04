@@ -4,64 +4,71 @@
 
 t_token *parse_input(char *line) 
 {
-    int i, start;
+    int i = 0;
+    int start = -1;
     char quote = '\0';
     t_token *head = NULL;
     t_token *tail = NULL;
     t_token *new = NULL;
 
-    for (i = 0, start = -1; line[i] != '\0'; i++) {
-        if (quote) {
-            if (line[i] == quote) {
+    while (line[i] != '\0') 
+    {
+        if (quote) 
+        {
+            if (line[i] == quote)
+            {
                 quote = '\0';
-                new = new_token(strndup(&line[start], i - start - 1), true);
-                if (!head) {
+                new = new_token(ft_strndup(&line[start], i - start), true);
+                if (!head)
                     head = new;
-                } else {
+                else
                     tail->next = new;
-                }
                 tail = new;
                 start = -1;
             }
-        } else if (line[i] == '\'' || line[i] == '\"') {
+        } 
+        else if (line[i] == '\'' || line[i] == '\"') 
+        {
             quote = line[i];
-            if (start >= 0) {
-                new = new_token(strndup(&line[start], i - start), false);
-                if (!head) {
+            if (start >= 0) 
+            {
+                new = new_token(ft_strndup(&line[start], i - start), false);
+                if (!head) 
                     head = new;
-                } else {
+                else
                     tail->next = new;
-                }
                 tail = new;
             }
             start = i + 1;
-        } else if (is_whitespace(line[i])) {
-            if (start >= 0) {
-                new = new_token(strndup(&line[start], i - start), false);
-                if (!head) {
+        } 
+        else if (is_whitespace(line[i])) 
+        {
+            if (start >= 0)
+            {
+                new = new_token(ft_strndup(&line[start], i - start), false);
+                if (!head) 
                     head = new;
-                } else {
+                else
                     tail->next = new;
-                }
                 tail = new;
                 start = -1;
             }
-        } else if (start < 0) {
+        } 
+        else if (start < 0)
             start = i;
-        }
+        i++;
     }
-
-    if (start >= 0) {
-        new = new_token(strndup(&line[start], i - start), quote != '\0');
-        if (!head) {
+    if (start >= 0) 
+    {
+        new = new_token(ft_strndup(&line[start], i - start + (quote != '\0')), quote != '\0');
+        if (!head) 
             head = new;
-        } else {
+        else 
             tail->next = new;
-        }
     }
-
-    return head;
+    return (head);
 }
+
 
 void print_tokens(t_token *tokens) 
 {

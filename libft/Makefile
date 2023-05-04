@@ -15,6 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 FILES=	ft_atoi.c \
 		ft_bzero.c \
+		ft_strndup.c \
 		ft_calloc.c \
 		ft_isalnum.c \
 		ft_isalpha.c \

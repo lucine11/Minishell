@@ -1,7 +1,5 @@
 CC = gcc
-
 #CFLAGS = -Wall -Wextra 
-
 NAME = minishell
 
 SRC = main.c utils.c
