@@ -1,29 +1,21 @@
 #ifndef MINISHELL_H
-# define MINISHELL_H
+#define MINISHELL_H
 
-# include "../libft/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-//# include <readline/readline.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-typedef struct s_simple_command
+typedef struct s_token 
 {
-	int	no_avail_args;
-	int	no_args;
-	char **arguments;
-	
-}				t_simple_command;
+    char *value;
+    bool is_quoted;
+    struct s_token *next;
+} t_token;
 
-typedef struct s_command
-{
-	int						no_avail_commands;
-	int						no_commands;
-	t_simple_command		**simple_commands;
-	char					*outfile;
-	char					*infile;
-	char					*errfile;
-	int						background;
-	t_simple_command	*current_s_command;
-}				t_command;
+t_token *parse_input(char *line);
+bool is_whitespace(char c);
+t_token *new_token(char *value, bool is_quoted);
 
 #endif

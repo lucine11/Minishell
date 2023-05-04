@@ -1,40 +1,19 @@
-NAME	:= minishell
-CC	:= cc
-CFLAGS	:= -I src/ -I lib/ -g3 #-fsanitize=address #-Wall -Werror -Wextra
-LDFLAGS	:=
-VPATH	:= src/ src/parsing/ src/env/
-OBJ_DIR	:= obj/
+CC = gcc
+#CFLAGS = -Wall -Wextra 
+NAME = minishell
 
-SRC		:=	main.c\
-			parsing.c\
-			#tokens.c\
-
-OBJ		:= $(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC)))
-
-LIBFT	:= libft
+SRC = main.c utils.c
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LDFLAGS)
-
-$(OBJ_DIR): 
-	mkdir obj
-
-$(OBJ_DIR)%.o: %.c 
-	$(CC) $(CFLAGS) $< -c -o $@
-
-$(LIBFT):
-	make -C ./libft
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lreadline
 
 clean:
-	make -C ./libft clean
-	rm -rf $(OBJ_DIR)
+	rm -f $(OBJ)
 
 fclean: clean
-	make -C ./libft fclean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all, clean, fclean, re, libft
