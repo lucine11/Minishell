@@ -75,9 +75,7 @@ t_token *parse_input(char *line)
     return (head);
 }
 
-
-
-
+//test
 void print_tokens(t_token *tokens) 
 {
     t_token *tmp = tokens;
