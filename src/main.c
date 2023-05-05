@@ -57,8 +57,6 @@ t_token *parse_input(char *line)
         else if (start < 0)
             start = i;
         i++;
-
-        // Handle end of quote followed immediately by another quote
         if (quote == '\0' && (line[i] == '\'' || line[i] == '\"'))
         {
             quote = line[i];
