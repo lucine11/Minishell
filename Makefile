@@ -1,19 +1,34 @@
 CC = gcc
-#CFLAGS = -Wall -Wextra 
+#CFLAGS = -Wall -Wextra -Werror
 NAME = minishell
-
-SRC = main.c utils.c
-OBJ = $(SRC:.c=.o)
+LIBFT = libft.a
+LIBFT_DIR = ./libft
+INCLUDES = -I$(LIBFT_DIR)
+		
+			
+SRCS = utils.c main.c
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lreadline
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT_DIR)/$(LIBFT) -lreadline -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
+	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
+
+.PHONY: all clean fclean re
+

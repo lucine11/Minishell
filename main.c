@@ -1,6 +1,6 @@
+#include "./inc/minishell.h"
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "minishell.h"
 
 t_token *parse_input(char *line) 
 {
