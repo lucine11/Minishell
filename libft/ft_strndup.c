@@ -13,9 +13,9 @@
 
 char *ft_strndup(const char *src, size_t n) 
 {
-    char *dst;
-    size_t len = 0;
-    int i = 0;
+    char    *dst;
+    size_t  len = 0;
+    int     i = 0;
 
     while (src[len] != '\0' && len < n)
         len++;
