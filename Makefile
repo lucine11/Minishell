@@ -5,8 +5,8 @@ LIBFT = libft.a
 LIBFT_DIR = ./libft
 INCLUDES = -I$(LIBFT_DIR)
 		
-			
-SRCS = utils.c main.c
+SRC_PATH = ./src/
+SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -1,4 +1,4 @@
-#include "./inc/minishell.h"
+#include "../inc/minishell.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 
