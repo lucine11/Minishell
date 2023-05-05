@@ -2,7 +2,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-t_token *parse_input(char *line) 
+t_token *parse_input(char *line)
 {
     int i = 0;
     int start = -1;
@@ -11,9 +11,9 @@ t_token *parse_input(char *line)
     t_token *tail = NULL;
     t_token *new = NULL;
 
-    while (line[i] != '\0') 
+    while (line[i] != '\0')
     {
-        if (quote) 
+        if (quote)
         {
             if (line[i] == quote)
             {
@@ -26,48 +26,58 @@ t_token *parse_input(char *line)
                 tail = new;
                 start = -1;
             }
-        } 
-        else if (line[i] == '\'' || line[i] == '\"') 
+        }
+        else if (line[i] == '\'' || line[i] == '\"')
         {
             quote = line[i];
-            if (start >= 0) 
+            if (start >= 0)
             {
                 new = new_token(ft_strndup(&line[start], i - start), false);
-                if (!head) 
+                if (!head)
                     head = new;
                 else
                     tail->next = new;
                 tail = new;
             }
             start = i + 1;
-        } 
-        else if (is_whitespace(line[i])) 
+        }
+        else if (is_whitespace(line[i]))
         {
             if (start >= 0)
             {
                 new = new_token(ft_strndup(&line[start], i - start), false);
-                if (!head) 
+                if (!head)
                     head = new;
                 else
                     tail->next = new;
                 tail = new;
                 start = -1;
             }
-        } 
+        }
         else if (start < 0)
             start = i;
         i++;
+
+        // Handle end of quote followed immediately by another quote
+        if (quote == '\0' && (line[i] == '\'' || line[i] == '\"'))
+        {
+            quote = line[i];
+            start = i + 1;
+            i++;
+        }
     }
-    if (start >= 0) 
+    if (start >= 0)
     {
         new = new_token(ft_strndup(&line[start], i - start + (quote != '\0')), quote != '\0');
-        if (!head) 
+        if (!head)
             head = new;
-        else 
+        else
             tail->next = new;
     }
     return (head);
 }
+
+
 
 
 void print_tokens(t_token *tokens) 
