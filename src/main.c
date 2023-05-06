@@ -76,15 +76,15 @@ t_token *parse_input(char *line)
 }
 
 //test
-void print_tokens(t_token *tokens) 
-{
-    t_token *tmp = tokens;
-    while (tmp) 
-    {
-        printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
-        tmp = tmp->next;
-    }
-}
+// void print_tokens(t_token *tokens) 
+// {
+//     t_token *tmp = tokens;
+//     while (tmp) 
+//     {
+//         printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
+//         tmp = tmp->next;
+//     }
+// }
 
 int main() 
 {
