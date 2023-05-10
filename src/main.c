@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:44:40 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:59:36 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int exit_status;
 
-t_token *parse_input(char *line)
+t_token *parse_quotes(char *line)
 {
     int i = 0;
     int start = -1;

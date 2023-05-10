@@ -31,7 +31,7 @@ typedef struct s_token
     struct s_token *next;
 } t_token;
 
-t_token *parse_input(char *line);
+t_token *parse_quotes(char *line);
 bool is_whitespace(char c);
 t_token	*breakdown_line(char *line);
 bool		check_characters(const char *line, const char *charset);

@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:23 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:40:02 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:00:13 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ t_token	*breakdown_line(char *line)
 		exit_status = 2;
 		return (NULL);
 	}
-    tokens = parse_input(line);
+    tokens = parse_quotes(line);
 	return (tokens);
 }
