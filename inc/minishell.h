@@ -24,7 +24,6 @@ extern int	exit_status;
 #define OP_ERROR "minishell:\
 	syntax error near unexpected token `%c%c'\n"
 
-
 typedef struct s_token 
 {
     char *value;

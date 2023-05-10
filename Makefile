@@ -6,7 +6,7 @@
 #    By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/10 15:35:56 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/10 15:38:26 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = minishell
 LIBFT = libft.a
 LIBFT_DIR = ./libft
 INCLUDES = -I$(LIBFT_DIR)
-		
+
 SRC_PATH = ./src/
 SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c $(SRC_PATH)parse_input.c
 OBJS = $(SRCS:.c=.o)

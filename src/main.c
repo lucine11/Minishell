@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:36:41 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:38:49 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token *parse_input(char *line)
     t_token *tail = NULL;
     t_token *new = NULL;
 
-    while (line[i] != '\0')
+    while (line[i])
     {
         if (quote)
         {
