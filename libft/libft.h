@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -63,4 +64,12 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
+int	ft_printf(int fd, const char *fmt, ...);
+int	ft_puthex(unsigned long n, int lowcase, int cnt, int fd);
+static int	fmt_id(char c, va_list fl, int nbc, int fd);
+static int	is_flag(const char *s);
+int	ft_putchar(char c, int fd);
+int	ft_putnbr(long n, int cnt, int fd);
+int	ft_putptr(unsigned long ptr, int fd);
+int	ft_putstr(char *str, int fd);
 #endif

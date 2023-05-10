@@ -2,6 +2,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+int exit_status;
+
 t_token *parse_input(char *line)
 {
     int i = 0;
@@ -76,35 +78,44 @@ t_token *parse_input(char *line)
 }
 
 //test
-// void print_tokens(t_token *tokens) 
-// {
-//     t_token *tmp = tokens;
-//     while (tmp) 
-//     {
-//         printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
-//         tmp = tmp->next;
-//     }
-// }
-
-int main() 
+void print_tokens(t_token *tokens) 
 {
+    t_token *tmp = tokens;
+    while (tmp) 
+    {
+        printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
+        tmp = tmp->next;
+    }
+}
+static void	check_args(int ac, char **av)
+{
+	(void)av;
+	if (ac > 1)
+	{
+		printf("minishell: too many args\n");
+		exit (127);
+	}
+}
+int main(int ac, char **av, char **envp)
+{
+    (void)envp;
     char *line;
     t_token *tokens;
 
+    exit_status = 0;
+    check_args(ac, av);
     while (1) 
     {
         line = readline("minishell$ ");
-        if (line == NULL) 
-        {
-            printf("\n");
-            break;
-        }
         if (*line) 
             add_history(line);
-        tokens = parse_input(line);
-        print_tokens(tokens);
-        free(line);     
+        tokens = breakdown_line(line);
+        if (tokens)
+        {
+            print_tokens(tokens);
+        }
+        //free(line);
     }
-
     return 0;
 }
+

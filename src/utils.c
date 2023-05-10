@@ -17,3 +17,58 @@ t_token *new_token(char *value, bool is_quoted) {
     token->next = NULL;
     return token;
 }
+
+void	change_value_state(int *state, int c)
+{
+	if (c == '\'')
+	{
+		if (*state == 1)
+			*state = 0;
+		else if (*state == 0)
+			*state = 1;
+	}
+	if (c == '\"')
+	{
+		if (*state == 2)
+			*state = 0;
+		else if (*state == 0)
+			*state = 2;
+	}
+}
+
+bool	check_characters(const char *line, const char *charset)
+{
+	int		i;
+	int		state;
+	int		j;
+
+	i = 0;
+	state = 0;
+	while (line[i])
+	{
+		change_value_state(&state, line[i]);
+		j = 0;
+		while (state == 0 && charset[j])
+		{
+			if (line[i] == charset[j])
+			{
+				ft_printf(2,
+					"minishell: syntax error: `%c' in input\n", charset[j]);
+				return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (true);
+}
+
+bool	check_pipe(const char *line)
+{
+	if (line[0] == '|')
+	{
+		ft_printf(2, "minishell: syntax error near unexpected token `|'\n");
+		return (false);
+	}
+	return (true);
+}

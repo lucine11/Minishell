@@ -6,7 +6,7 @@ LIBFT_DIR = ./libft
 INCLUDES = -I$(LIBFT_DIR)
 		
 SRC_PATH = ./src/
-SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c
+SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c $(SRC_PATH)parse_input.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -17,6 +17,12 @@ FILES=	ft_atoi.c \
 		ft_bzero.c \
 		ft_strndup.c \
 		ft_calloc.c \
+		ft_putchar.c \
+		ft_putnbr.c \
+		ft_puthex.c \
+		ft_putptr.c \
+		ft_putstr.c \
+		ft_printf.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \
