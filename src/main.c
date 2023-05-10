@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:38:49 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:44:40 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,15 @@ t_token *parse_input(char *line)
 }
 
 //test
-void print_tokens(t_token *tokens) 
-{
-    t_token *tmp = tokens;
-    while (tmp) 
-    {
-        printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
-        tmp = tmp->next;
-    }
-}
+// void print_tokens(t_token *tokens) 
+// {
+//     t_token *tmp = tokens;
+//     while (tmp) 
+//     {
+//         printf("Token: %s (quoted: %s)\n", tmp->value, tmp->is_quoted ? "yes" : "no");
+//         tmp = tmp->next;
+//     }
+// }
 static void	check_args(int ac, char **av)
 {
 	(void)av;
@@ -122,10 +122,10 @@ int main(int ac, char **av, char **envp)
         if (*line) 
             add_history(line);
         tokens = breakdown_line(line);
-        if (tokens)
-        {
-            print_tokens(tokens);
-        }
+        // if (tokens)
+        // {
+        //     print_tokens(tokens);
+        // }
         //free(line);
     }
     return 0;

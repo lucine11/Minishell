@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:08 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:40:54 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:47:49 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ bool is_whitespace(char c)
     return c == ' ' || c == '\t' || c == '\n' || c == '\r';
 }
 
-
-t_token *new_token(char *value, bool is_quoted) {
+t_token *new_token(char *value, bool is_quoted) 
+{
     t_token *token = malloc(sizeof(t_token));
     if (!token) 
     {
