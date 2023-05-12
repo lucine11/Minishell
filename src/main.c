@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/12 01:28:07 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:29:44 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ t_token *parse_quotes(char *line)
     return (head);
 }
 
-//test
 void print_tokens(t_token *tokens) 
 {
     t_token *tmp = tokens;
