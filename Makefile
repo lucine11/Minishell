@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+         #
+#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/10 15:38:26 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/12 01:19:07 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = minishell
 LIBFT = libft.a
 LIBFT_DIR = ./libft

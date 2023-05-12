@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/05/12 16:19:51 by lahamoun         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/12 01:29:44 by lahamoun         ###   ########.fr       */
+>>>>>>> 69febbd737ff2f8b9b5f40c8dfb7ef62597a5c55
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +84,11 @@ t_token *parse_quotes(char *line)
     }
     if (start >= 0)
     {
+<<<<<<< HEAD
         new = new_token(ft_strndup(&line[start], i - start), false);
+=======
+        new = new_token(ft_strndup(&line[start], i - start + (quote != '\0')), false);
+>>>>>>> 69febbd737ff2f8b9b5f40c8dfb7ef62597a5c55
         if (!head)
             head = new;
         else
@@ -89,7 +97,6 @@ t_token *parse_quotes(char *line)
     return (head);
 }
 
-//test
 void print_tokens(t_token *tokens) 
 {
     t_token *tmp = tokens;

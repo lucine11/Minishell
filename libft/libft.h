@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:12:31 by lahamoun          #+#    #+#             */
-/*   Updated: 2022/11/09 05:11:29 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:20:19 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 int	ft_printf(int fd, const char *fmt, ...);
 int	ft_puthex(unsigned long n, int lowcase, int cnt, int fd);
-static int	fmt_id(char c, va_list fl, int nbc, int fd);
-static int	is_flag(const char *s);
 int	ft_putchar(char c, int fd);
 int	ft_putnbr(long n, int cnt, int fd);
 int	ft_putptr(unsigned long ptr, int fd);

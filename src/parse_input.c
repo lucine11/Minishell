@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:23 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 16:00:13 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:30:57 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ bool	isempty_line(char *line)
 
 t_token	*breakdown_line(char *line)
 {
-    t_token *tokens = (NULL);
+    t_token *tokens = NULL;
 
 	if (!line || isempty_line(line))
 		return (NULL);
