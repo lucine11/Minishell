@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 16:07:18 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:28:07 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_token *parse_quotes(char *line)
     }
     if (start >= 0)
     {
-        new = new_token(ft_strndup(&line[start], i - start + (quote != '\0')), quote != '\0');
+        new = new_token(ft_strndup(&line[start], i - start + (quote != '\0')), false);
         if (!head)
             head = new;
         else
