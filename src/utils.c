@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:08 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/10 15:47:49 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:11:53 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_token *new_token(char *value, bool is_quoted)
     token->value = value;
     token->is_quoted = is_quoted;
     token->next = NULL;
-    return token;
+    return (token);
 }
 
 void	change_value_state(int *state, int c)
