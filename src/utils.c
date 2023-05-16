@@ -65,8 +65,7 @@ bool	check_characters(const char *line, const char *charset)
 		{
 			if (line[i] == charset[j])
 			{
-				ft_printf(2,
-					"minishell: syntax error: `%c' in input\n", charset[j]);
+				ft_printf(2, "minishell: syntax error: `%c' in input\n", charset[j]);
 				return (false);
 			}
 			j++;
