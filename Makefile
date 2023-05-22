@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/22 15:36:36 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/22 15:45:34 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,14 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Linking...$(NC)"
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT_DIR)/$(LIBFT) -lreadline -o $(NAME)
 	@echo "$(GREEN)Done!$(NC)"
+	@echo "$(GREEN)"
+	@echo " __  __ _           _   _          "
+	@echo "|  \/  (_)         | | (_)         "
+	@echo "| \  / |_ _ __ ___ | |  _ _ __ ___ "
+	@echo "| |\/| | | '_ \` _ \| | | | '_ \` _ \\"
+	@echo "| |  | | | | | | | | |_| | | | | | |"
+	@echo "|_|  |_|_|_| |_| |_|_(_)_|_| |_| |_|"
+	@echo "$(NC)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
