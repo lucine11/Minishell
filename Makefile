@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/22 15:35:31 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/22 15:36:36 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ_DIR = ./obj/
 
 RED=\033[0;31m
 GREEN=\033[0;32m
-NC=\033[0m # No Color
+NC=\033[0m
 
 SRCS = $(wildcard $(SRC_DIR)*.c)
 OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
