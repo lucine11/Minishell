@@ -39,4 +39,5 @@ bool		check_pipe(const char *line);
 t_token *new_token(char *value, bool is_quoted);
 bool        isempty_line(char *line);
 void	change_value_state(int *state, int c);
+char	**args_split(char *cmd);
 #endif

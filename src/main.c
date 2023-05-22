@@ -107,11 +107,46 @@ static void	check_args(int ac, char **av)
 		exit (127);
 	}
 }
+void free_args(char **args)
+{
+    int i = 0;
+    while(args[i])
+    {
+        free(args[i]);
+        i++;
+    }
+    free(args);
+}
+
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)envp;
+//     char *line;
+//     t_token *tokens;
+
+//     exit_status = 0;
+//     check_args(ac, av);
+//     while (1) 
+//     {
+//         line = readline("minishell$ ");
+//         if (*line) 
+//             add_history(line);
+//         tokens = breakdown_line(line);
+//         if (tokens)
+//         {
+//             print_tokens(tokens);
+//         }
+//         free(line);
+//     }
+//     return 0;
+// }
+
 int main(int ac, char **av, char **envp)
 {
     (void)envp;
     char *line;
     t_token *tokens;
+    char **args;
 
     exit_status = 0;
     check_args(ac, av);
@@ -123,10 +158,23 @@ int main(int ac, char **av, char **envp)
         tokens = breakdown_line(line);
         if (tokens)
         {
-            print_tokens(tokens);
+            while (tokens != NULL)
+            {
+                args = args_split(tokens->value);
+
+                // Print the args for testing
+                int i = 0;
+                while (args[i]) 
+                {
+                    printf("Arg[%d]: %s\n", i, args[i]);
+                    i++;
+                }
+
+                tokens = tokens->next;
+                free_args(args);
+            }
         }
         free(line);
     }
     return 0;
 }
-
