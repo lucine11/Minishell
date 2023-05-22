@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:37 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/12 16:31:01 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:12:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ static void	check_args(int ac, char **av)
 		exit (127);
 	}
 }
+
 void free_args(char **args)
 {
     int i = 0;
@@ -118,11 +119,37 @@ void free_args(char **args)
     free(args);
 }
 
+int main(int ac, char **av, char **envp)
+{
+    (void)envp;
+    char *line;
+    t_token *tokens;
+
+    exit_status = 0;
+    check_args(ac, av);
+    while (1) 
+    {
+        line = readline("minishell$ ");
+        if (*line) 
+            add_history(line);
+        tokens = breakdown_line(line);
+        if (tokens)
+{
+    char *parsed_line = parse_op(line);
+    printf("Parsed line: %s\n", parsed_line);
+    free(parsed_line);
+    print_tokens(tokens);
+}
+    }
+    return 0;
+}
+
 // int main(int ac, char **av, char **envp)
 // {
 //     (void)envp;
 //     char *line;
 //     t_token *tokens;
+//     char **args;
 
 //     exit_status = 0;
 //     check_args(ac, av);
@@ -134,47 +161,24 @@ void free_args(char **args)
 //         tokens = breakdown_line(line);
 //         if (tokens)
 //         {
-//             print_tokens(tokens);
+//             while (tokens != NULL)
+//             {
+//                 tokens->value = parse_op(tokens->value);
+//                 args = args_split(tokens->value);
+
+//                 // Print the args for testing
+//                 int i = 0;
+//                 while (args[i]) 
+//                 {
+//                     printf("Arg[%d]: %s\n", i, args[i]);
+//                     i++;
+//                 }
+
+//                 tokens = tokens->next;
+//                 free_args(args);
+//             }
 //         }
 //         free(line);
 //     }
 //     return 0;
 // }
-
-int main(int ac, char **av, char **envp)
-{
-    (void)envp;
-    char *line;
-    t_token *tokens;
-    char **args;
-
-    exit_status = 0;
-    check_args(ac, av);
-    while (1) 
-    {
-        line = readline("minishell$ ");
-        if (*line) 
-            add_history(line);
-        tokens = breakdown_line(line);
-        if (tokens)
-        {
-            while (tokens != NULL)
-            {
-                args = args_split(tokens->value);
-
-                // Print the args for testing
-                int i = 0;
-                while (args[i]) 
-                {
-                    printf("Arg[%d]: %s\n", i, args[i]);
-                    i++;
-                }
-
-                tokens = tokens->next;
-                free_args(args);
-            }
-        }
-        free(line);
-    }
-    return 0;
-}

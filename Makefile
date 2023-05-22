@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/12 01:19:07 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/22 14:31:46 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFT_DIR = ./libft
 INCLUDES = -I$(LIBFT_DIR)
 
 SRC_PATH = ./src/
-SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c $(SRC_PATH)parse_input.c $(SRC_PATH)parse_cmd_line.c
+SRCS = $(SRC_PATH)utils.c $(SRC_PATH)main.c $(SRC_PATH)parse_input.c $(SRC_PATH)parse_cmd_line.c\
+$(SRC_PATH)utils02.c $(SRC_PATH)parse_op_spaces.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -40,4 +40,9 @@ t_token *new_token(char *value, bool is_quoted);
 bool        isempty_line(char *line);
 void	change_value_state(int *state, int c);
 char	**args_split(char *cmd);
+char	*parse_op(char *cmd);
+bool	check_for_pipe(char c);
+bool	check_for_redirection(char c);
+bool	check_for_space(char c);
+
 #endif
