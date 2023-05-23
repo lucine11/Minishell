@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/22 15:45:34 by codespace        ###   ########.fr        #
+#    Updated: 2023/05/23 17:41:56 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,17 +39,16 @@ $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT_DIR)/$(LIBFT) -lreadline -o $(NAME)
 	@echo "$(GREEN)Done!$(NC)"
 	@echo "$(GREEN)"
-	@echo " __  __ _           _   _          "
-	@echo "|  \/  (_)         | | (_)         "
-	@echo "| \  / |_ _ __ ___ | |  _ _ __ ___ "
-	@echo "| |\/| | | '_ \` _ \| | | | '_ \` _ \\"
-	@echo "| |  | | | | | | | | |_| | | | | | |"
-	@echo "|_|  |_|_|_| |_| |_|_(_)_|_| |_| |_|"
-	@echo "$(NC)"
-
+	
+	@echo "  __  __ _       _  _____ _          _ _ "
+	@echo " |  \/  (_)     (_)/ ____| |        | | |"
+	@echo " | \  / |_ _ __  _| (___ | |__   ___| | |"
+	@echo " | |\/| | | '_ \| |\___ \| '_ \ / _ \ | |"
+	@echo " | |  | | | | | | |____) | | | |  __/ | |"
+	@echo " |_|  |_|_|_| |_|_|_____/|_| |_|\___|_|_|"
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
-	@echo "$(RED)Compiling $<...$(NC)"
+	@echo "$(GREEN)Compiling $<...$(NC)"
 	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 
 $(LIBFT):
