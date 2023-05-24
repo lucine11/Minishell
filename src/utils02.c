@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:58:36 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/24 15:21:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/05/24 15:35:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,35 @@ int	ft_list_size(t_env *env)
 		i++;
 	}
 	return (i);
+}
+
+t_env	*ft_list_last(t_env *env)
+{
+	t_env	*last;
+
+	last = env;
+	if (env == NULL)
+		return (NULL);
+	while (env != NULL)
+	{
+		last = env;
+		env = env->next;
+	}
+	return (last);
+}
+
+void	ft_listadd_back(t_env **env, t_env *new_env)
+{
+	t_env	*last;
+
+	if (!new_env || !env)
+		return ;
+	if (*env == NULL)
+		*env = new_env;
+	else
+	{
+		last = ft_list_last(*env);
+		last->next = new_env;
+		new_env->prev = last;
+	}
 }
