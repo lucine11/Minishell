@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 20:12:31 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/12 01:20:19 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:09:43 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ int	ft_putchar(char c, int fd);
 int	ft_putnbr(long n, int cnt, int fd);
 int	ft_putptr(unsigned long ptr, int fd);
 int	ft_putstr(char *str, int fd);
+int ft_strcmp(char *s1, char *s2);
 #endif

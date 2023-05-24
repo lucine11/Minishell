@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
+#    By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 10:58:32 by lahamoun          #+#    #+#              #
-#    Updated: 2022/11/09 05:28:37 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/24 18:10:14 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ FILES=	ft_atoi.c \
 		ft_memmove.c \
 		ft_memset.c \
 		ft_putstr_fd.c \
+		ft_strcmp.c \
 		ft_split.c \
 		ft_strchr.c \
 		ft_strdup.c \
