@@ -56,4 +56,6 @@ void	ft_listadd_back(t_env **env, t_env *new_env);
 t_env	*ft_list_last(t_env *env);
 int	ft_list_size(t_env *env);
 t_env	*ft_list_search(t_env *env, char *searched);
+t_env	*get_env_variables(char **envp);
+void	get_prompt(t_env *env);
 #endif

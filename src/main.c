@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/25 15:30:29 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:07:20 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,14 @@ void free_args(char **args)
 int main(int ac, char **av, char **envp)
 {
     (void)envp;
+    (void)ac;
+    (void)av;
     char *line;
     t_token *tokens;
-
+    t_env *env_list;
+    
+    env_list = get_env_variables(envp);
+    get_prompt(env_list);
     exit_status = 0;
     while (1) 
     {
@@ -132,13 +137,13 @@ int main(int ac, char **av, char **envp)
         if (*line) 
             add_history(line);
         tokens = breakdown_line(line);
-        if (tokens)
-{
-    char *parsed_line = parse_op(line);
-    printf("Parsed line: %s\n", parsed_line);
-    free(parsed_line);
-    print_tokens(tokens);
-}
+    if (tokens)
+    {
+        char *parsed_line = parse_op(line);
+        printf("Parsed line: %s\n", parsed_line);
+        free(parsed_line);
+        print_tokens(tokens);
+    }
     }
     return 0;
 }
