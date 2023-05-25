@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:17:42 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/25 18:15:01 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:51:06 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,19 @@ static void	prompt_get_path(t_env *env)
 static void	prompt_get_user(t_env *env)
 {
 	t_env		*env_tmp;
-	char		*tmp;
 
 	env_tmp = ft_lst_search(env, "USER");
 	if (!env_tmp)
 		return ;
 	if (env_tmp->value)
 		printf("%s@", env_tmp->value);
-	env_tmp = ft_lst_search(env, "SESSION_MANAGER");
-	if (!env_tmp)
-		return ;
-	tmp = ft_substr(env_tmp->value, 6, 3);
-	if (tmp)
-		printf("%s:", tmp);
-	free(tmp);
+	// env_tmp = ft_lst_search(env, "SESSION_MANAGER");
+	// if (!env_tmp)
+	// 	return ;
+	// tmp = ft_substr(env_tmp->value, 6, 3);
+	// if (tmp)
+	// 	printf("%s:", tmp);
+	// free(tmp);
 }
 
 void	get_prompt(t_env *env)
