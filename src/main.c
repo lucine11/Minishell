@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/24 16:10:40 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:30:29 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,15 @@ void print_tokens(t_token *tokens)
         tmp = tmp->next;
     }
 }
-static void	check_args(int ac, char **av)
-{
-	(void)av;
-	if (ac > 1)
-	{
-		printf("minishell: too many args\n");
-		exit (127);
-	}
-}
+// static void	check_args(int ac, char **av)
+// {
+// 	(void)av;
+// 	if (ac > 1)
+// 	{
+// 		printf("minishell: too many args\n");
+// 		exit (127);
+// 	}
+// }
 
 void free_args(char **args)
 {
@@ -126,7 +126,6 @@ int main(int ac, char **av, char **envp)
     t_token *tokens;
 
     exit_status = 0;
-    check_args(ac, av);
     while (1) 
     {
         line = readline("minishell$ ");
