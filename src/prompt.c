@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:17:42 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/25 18:51:50 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:58:59 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ t_env	*ft_lst_search(t_env *env, char *searched)
 	return (NULL);
 }
 
-static void	prompt_get_exitc(int exit)
+static void	get_exitc(int exit)
 {
 	if (exit == 0)
 		return ;
 	printf("[%d]", exit);
 }
 
-static void	prompt_get_path(t_env *env)
+static void	get_path(t_env *env)
 {
 	t_env	*home;
 	char	*pwd;
@@ -58,7 +58,7 @@ static void	prompt_get_path(t_env *env)
 	free(pwd);
 }
 
-static void	prompt_get_user(t_env *env)
+static void	get_user(t_env *env)
 {
 	t_env		*env_tmp;
 
@@ -71,8 +71,8 @@ static void	prompt_get_user(t_env *env)
 
 void	get_prompt(t_env *env)
 {
-	prompt_get_user(env);
-	prompt_get_path(env);
-	prompt_get_exitc(exit_status);
+	get_user(env);
+	get_path(env);
+	get_exitc(exit_status);
 	printf("\n");
 }
