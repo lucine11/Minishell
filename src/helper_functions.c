@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 15:36:08 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/12 14:11:53 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/27 08:19:25 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,14 @@ bool	check_pipe(const char *line)
 		return (false);
 	}
 	return (true);
+}
+
+int	ft_arrlen(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr && arr[i])
+		i++;
+	return (i);
 }

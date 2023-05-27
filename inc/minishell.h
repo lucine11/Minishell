@@ -24,6 +24,21 @@ extern int	exit_status;
 #define OP_ERROR "minishell:\
 	syntax error near unexpected token `%c%c'\n"
 
+typedef enum CommandType
+{
+    COM_ARGUMENT = 1,       // The argument of a command
+    COM_NAME = 2,          // The name of the command to be executed
+    RED_INPUT_SIGNAL = 3,  // A signal to redirect input ("<")
+    RED_INPUT_FILE = 4,    // The file to redirect input from
+    RED_OUTPUT_SIGNAL = 5, // A signal to redirect output (">")
+    RED_OUTPUT_FILE = 6,   // The file to redirect output to
+    HER_SIGNAL = 7,        // A signal for here-document input ("<<")
+    HER_LIMITER = 8,       // The delimiter of a here-document
+    APPEND_O_SIGNAL = 9,   // A signal to append output (">>")
+    APPEND_O_FILE = 10,    // The file to append output to
+    PIPELINE = 11,           // A signal for pipelining commands ("|")
+} CommandType;
+
 typedef struct s_token 
 {
     char *value;
@@ -58,4 +73,5 @@ int	ft_list_size(t_env *env);
 t_env	*ft_list_search(t_env *env, char *searched);
 t_env	*get_env_variables(char **envp);
 void	get_prompt(t_env *env);
+int		ft_arrlen(char **arr);
 #endif
