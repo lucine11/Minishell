@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/27 00:57:31 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/27 03:33:30 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,35 +119,6 @@ void free_args(char **args)
     free(args);
 }
 
-// int main(int ac, char **av, char **envp)
-// {
-//     (void)envp;
-//     (void)ac;
-//     (void)av;
-//     char *line;
-//     t_token *tokens;
-//     t_env *env_list;
-    
-//     env_list = get_env_variables(envp);
-//     get_prompt(env_list);
-//     exit_status = 0;
-//     while (1) 
-//     {
-//         line = readline("minishell$ ");
-//         if (*line) 
-//             add_history(line);
-//         tokens = breakdown_line(line);
-//     if (tokens)
-//     {
-//         char *parsed_line = parse_op(line);
-//         printf("Parsed line: %s\n", parsed_line);
-//         free(parsed_line);
-//         print_tokens(tokens);
-//     }
-//     }
-//     return 0;
-// }
-
 int main(int ac, char **av, char **envp)
 {
     (void)envp;
@@ -155,36 +126,65 @@ int main(int ac, char **av, char **envp)
     (void)av;
     char *line;
     t_token *tokens;
-    char **args;
-
+    t_env *env_list;
+    
+    env_list = get_env_variables(envp);
+    get_prompt(env_list);
     exit_status = 0;
-    // check_args(ac, av);
     while (1) 
     {
-        line = readline("minishell$ ");
+        line = readline("$ ");
         if (*line) 
             add_history(line);
         tokens = breakdown_line(line);
-        if (tokens)
-        {
-            while (tokens != NULL)
-            {
-                tokens->value = parse_op(tokens->value);
-                args = args_split(tokens->value);
-
-                // Print the args for testing
-                int i = 0;
-                while (args[i]) 
-                {
-                    printf("Arg[%d]: %s\n", i, args[i]);
-                    i++;
-                }
-
-                tokens = tokens->next;
-                free_args(args);
-            }
-        }
-        free(line);
+    if (tokens)
+    {
+        char *parsed_line = parse_op(line);
+        printf("Parsed line: %s\n", parsed_line);
+        free(parsed_line);
+        print_tokens(tokens);
+    }
     }
     return 0;
 }
+
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)envp;
+//     (void)ac;
+//     (void)av;
+//     char *line;
+//     t_token *tokens;
+//     char **args;
+
+//     exit_status = 0;
+//     // check_args(ac, av);
+//     while (1) 
+//     {
+//         line = readline("minishell$ ");
+//         if (*line) 
+//             add_history(line);
+//         tokens = breakdown_line(line);
+//         if (tokens)
+//         {
+//             while (tokens != NULL)
+//             {
+//                 tokens->value = parse_op(tokens->value);
+//                 args = args_split(tokens->value);
+
+//                 // Print the args for testing
+//                 int i = 0;
+//                 while (args[i]) 
+//                 {
+//                     printf("Arg[%d]: %s\n", i, args[i]);
+//                     i++;
+//                 }
+
+//                 tokens = tokens->next;
+//                 free_args(args);
+//             }
+//         }
+//         free(line);
+//     }
+//     return 0;
+// }
