@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 08:51:32 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/27 10:51:50 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/27 10:55:33 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ static bool	check_for_filesop(int *cmd)
 	return (true);
 }
 
-bool	double_op(int *cmd_type)
+bool	double_op(int *cmd)
 {
 	int		i;
 
 	i = 0;
-	while (cmd_type[i])
+	while (cmd[i])
 	{
-		if (cmd_type[i] == PIPELINE && cmd_type[i + 1] == PIPELINE)
+		if (cmd[i] == PIPELINE && cmd[i + 1] == PIPELINE)
 		{
 			ft_printf(2, "minishell: syntax error near unexpected token `|'\n");
 			return (false);
@@ -86,25 +86,25 @@ bool	double_op(int *cmd_type)
 	return (true);
 }
 
-bool	check_tokens(int *cmd_type)
+bool	check_tokens(int *cmd)
 {
-	if (!double_op(cmd_type))
+	if (!double_op(cmd))
 	{
 		exit_status = 2;
 		return (false);
 	}
-	if (check_iflastop_pip(cmd_type))
+	if (check_iflastop_pip(cmd))
 	{
 		exit_status = 2;
 		return (false);
 	}
-	if (!check_for_filesop(cmd_type))
+	if (!check_for_filesop(cmd))
 	{
 		exit_status = 2;
 		ft_printf(2, "minishell: syntax error: near unexpected token\n");
 		return (false);
 	}
-	if (!check_for_maxheredoc(cmd_type))
+	if (!check_for_maxheredoc(cmd))
 		return (false);
 	return (true);
 }
