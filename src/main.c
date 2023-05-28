@@ -144,7 +144,8 @@ int main(int ac, char **av, char **envp)
                 args = args_split(tokens->value);
 
                 comtype = tokenization(args);
-                if (comtype) {
+                if (comtype) 
+                {
                     int i = 0;
                     while (args[i]) 
                     {
@@ -153,10 +154,9 @@ int main(int ac, char **av, char **envp)
                         i++;
                     }
                     free(comtype);
-                } else {
+                } 
+                else 
                     printf("Tokenization failed.\n");
-                }
-
                 tokens = tokens->next;
                 free_args(args);
             }
