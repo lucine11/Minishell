@@ -26,14 +26,14 @@ static void	define_token_operator(char *cmd, int *comtype)
 		*comtype = RED_OUTPUT_SIGNAL;
 }
 
-static bool	is_in_charset(char c, char *charset)
+static bool	is_operator(char c, char *op)
 {
 	int	i;
 
 	i = 0;
-	while (charset[i])
+	while (op[i])
 	{
-		if (charset[i] == c)
+		if (op[i] == c)
 			return (true);
 		i++;
 	}
@@ -44,10 +44,10 @@ static void	define_token_type(char **cmd, int **comtype, int i, bool *cmd_in_pip
 {
     if (i == 0 && cmd[i][0] == '|')
     {
-		syntax_error("minishell: syntax error near unexpected token `|'\n");
+		ft_printf(2,"minishell: syntax error near unexpected token `|'\n");
 		return;
 	}
-	if (is_in_charset(cmd[i][0], "<>|"))
+	if (is_operator(cmd[i][0], "<>|"))
 	{
 		define_token_operator(cmd[i], &(*comtype)[i]);
 		if ((*comtype)[i] == PIPELINE)
@@ -88,7 +88,7 @@ int	*tokenization(char **cmd)
 		i++;
 	}
 	if (check_tokens(comtype))
-		return (cmd);
+		return (comtype);
 	exit_status = 2;
 	free(cmd);
 	return (NULL);
