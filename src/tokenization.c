@@ -42,11 +42,11 @@ static bool	is_operator(char c, char *op)
 
 static void	define_token_type(char **cmd, int **comtype, int i, bool *is_pipe)
 {
-    // if (i == 0 && cmd[i][0] == '|')
-    // {
-	// 	ft_printf(2,"minishell: syntax error near unexpected token `|'\n");
-	// 	return;
-	// }
+    if (i == 0 && cmd[i][0] == '|')
+    {
+		ft_printf(2,"minishell: syntax error near unexpected token `|'\n");
+		return;
+	}
 	if (is_operator(cmd[i][0], "<>|"))
 	{
 		define_token_operator(cmd[i], &(*comtype)[i]);
