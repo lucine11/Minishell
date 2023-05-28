@@ -75,4 +75,5 @@ t_env	*get_env_variables(char **envp);
 void	get_prompt(t_env *env);
 int		ft_arrlen(char **arr);
 bool	check_tokens(int *cmd);
+int	    *tokenization(char **cmd);
 #endif

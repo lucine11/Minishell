@@ -118,7 +118,6 @@ void free_args(char **args)
     }
     free(args);
 }
-
 int main(int ac, char **av, char **envp)
 {
     (void)envp;
@@ -126,27 +125,76 @@ int main(int ac, char **av, char **envp)
     (void)av;
     char *line;
     t_token *tokens;
-    t_env *env_list;
-    
-    env_list = get_env_variables(envp);
-    get_prompt(env_list);
+    char **args;
+    int *comtype;
+
     exit_status = 0;
+    // check_args(ac, av);
     while (1) 
     {
-        line = readline("$ ");
+        line = readline("minishell$ ");
         if (*line) 
             add_history(line);
         tokens = breakdown_line(line);
-    if (tokens)
-    {
-        char *parsed_line = parse_op(line);
-        printf("Parsed line: %s\n", parsed_line);
-        free(parsed_line);
-        print_tokens(tokens);
-    }
+        if (tokens)
+        {
+            while (tokens != NULL)
+            {
+                tokens->value = parse_op(tokens->value);
+                args = args_split(tokens->value);
+
+                comtype = tokenization(args);
+                if (comtype) {
+                    int i = 0;
+                    while (args[i]) 
+                    {
+                        printf("Arg[%d]: %s\n", i, args[i]);
+                        printf("Comtype[%d]: %d\n", i, comtype[i]);
+                        i++;
+                    }
+                    free(comtype);
+                } else {
+                    printf("Tokenization failed.\n");
+                }
+
+                tokens = tokens->next;
+                free_args(args);
+            }
+        }
+        free(line);
     }
     return 0;
 }
+
+
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)envp;
+//     (void)ac;
+//     (void)av;
+//     char *line;
+//     t_token *tokens;
+//     t_env *env_list;
+    
+//     env_list = get_env_variables(envp);
+//     get_prompt(env_list);
+//     exit_status = 0;
+//     while (1) 
+//     {
+//         line = readline("$ ");
+//         if (*line) 
+//             add_history(line);
+//         tokens = breakdown_line(line);
+//     if (tokens)
+//     {
+//         char *parsed_line = parse_op(line);
+//         printf("Parsed line: %s\n", parsed_line);
+//         free(parsed_line);
+//         print_tokens(tokens);
+//     }
+//     }
+//     return 0;
+// }
 
 // int main(int ac, char **av, char **envp)
 // {
@@ -171,8 +219,7 @@ int main(int ac, char **av, char **envp)
 //             {
 //                 tokens->value = parse_op(tokens->value);
 //                 args = args_split(tokens->value);
-
-//                 // Print the args for testing
+        
 //                 int i = 0;
 //                 while (args[i]) 
 //                 {

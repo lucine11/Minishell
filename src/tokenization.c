@@ -40,18 +40,18 @@ static bool	is_operator(char c, char *op)
 	return (false);
 }
 
-static void	define_token_type(char **cmd, int **comtype, int i, bool *cmd_in_pipe)
+static void	define_token_type(char **cmd, int **comtype, int i, bool *is_pipe)
 {
-    if (i == 0 && cmd[i][0] == '|')
-    {
-		ft_printf(2,"minishell: syntax error near unexpected token `|'\n");
-		return;
-	}
+    // if (i == 0 && cmd[i][0] == '|')
+    // {
+	// 	ft_printf(2,"minishell: syntax error near unexpected token `|'\n");
+	// 	return;
+	// }
 	if (is_operator(cmd[i][0], "<>|"))
 	{
 		define_token_operator(cmd[i], &(*comtype)[i]);
 		if ((*comtype)[i] == PIPELINE)
-			*cmd_in_pipe = false;
+			*is_pipe = false;
 	}
 	else if (i > 0 && (*comtype)[i - 1] == HER_SIGNAL)
 		(*comtype)[i] = HER_LIMITER;
@@ -62,18 +62,18 @@ static void	define_token_type(char **cmd, int **comtype, int i, bool *cmd_in_pip
 	else if (i > 0 && (*comtype)[i - 1] == APPEND_O_SIGNAL)
 		(*comtype)[i] = APPEND_O_FILE;
 	else if ((i > 0 && (*comtype)[i - 1] == COM_NAME)
-			|| (i > 0 && (*comtype)[i - 1] == COM_ARGUMENT) || *cmd_in_pipe == true)
+			|| (i > 0 && (*comtype)[i - 1] == COM_ARGUMENT) || *is_pipe == true)
 		(*comtype)[i] = COM_ARGUMENT;
 	else
 	{
 		(*comtype)[i] = COM_NAME;
-		*cmd_in_pipe = true;
+		*is_pipe = true;
 	}
 }
 
 int	*tokenization(char **cmd)
 {
-	bool	cmd_in_pipe;
+	bool	is_pipe;
 	int		*comtype;
 	int		i;
 
@@ -81,15 +81,15 @@ int	*tokenization(char **cmd)
 	if (!comtype)
 		return (NULL);
 	i = 0;
-	cmd_in_pipe = false;
+	is_pipe = false;
 	while (cmd[i])
 	{
-		define_token_type(cmd, &comtype, i, &cmd_in_pipe);
+		define_token_type(cmd, &comtype, i, &is_pipe);
 		i++;
 	}
 	if (check_tokens(comtype))
 		return (comtype);
 	exit_status = 2;
-	free(cmd);
+	free(comtype);
 	return (NULL);
 }
