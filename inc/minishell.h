@@ -39,6 +39,14 @@ typedef enum CommandType
     PIPELINE = 11,           // A signal for pipelining commands ("|")
 } CommandType;
 
+typedef struct  s_command
+{
+    char            **args;
+    struct s_command *pipe;
+    int             input;
+    int             output;
+}               t_command;
+
 typedef struct s_token 
 {
     char *value;
