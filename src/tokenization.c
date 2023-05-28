@@ -12,6 +12,34 @@
 
 #include "../inc/minishell.h"
 
+static void	define_token_operator(char *cmd, int *comtype)
+{
+	if (cmd[0] == '|')
+		*comtype = PIPELINE;
+	else if (ft_strlen(cmd) > 1 && cmd[0] == '<')
+		*comtype = HER_SIGNAL;
+	else if (ft_strlen(cmd) > 1 && cmd[0] == '>')
+		*comtype = APPEND_O_SIGNAL;
+	else if (cmd[0] == '<')
+		*comtype = RED_INPUT_SIGNAL;
+	else if (cmd[0] == '>')
+		*comtype = RED_OUTPUT_SIGNAL;
+}
+
+static bool	is_in_charset(char c, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (charset[i] == c)
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
 static void	define_token_type(char **cmd, int **comtype, int i, bool *cmd_in_pipe)
 {
     if (i == 0 && cmd[i][0] == '|')
@@ -41,34 +69,6 @@ static void	define_token_type(char **cmd, int **comtype, int i, bool *cmd_in_pip
 		(*comtype)[i] = COM_NAME;
 		*cmd_in_pipe = true;
 	}
-}
-
-static void	define_token_operator(char *cmd, int *comtype)
-{
-	if (cmd[0] == '|')
-		*comtype = PIPELINE;
-	else if (ft_strlen(cmd) > 1 && cmd[0] == '<')
-		*comtype = HER_SIGNAL;
-	else if (ft_strlen(cmd) > 1 && cmd[0] == '>')
-		*comtype = APPEND_O_SIGNAL;
-	else if (cmd[0] == '<')
-		*comtype = RED_INPUT_SIGNAL;
-	else if (cmd[0] == '>')
-		*comtype = RED_OUTPUT_SIGNAL;
-}
-
-static bool	is_in_charset(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == c)
-			return (true);
-		i++;
-	}
-	return (false);
 }
 
 int	*tokenization(char **cmd)
