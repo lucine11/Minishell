@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include <unistd.h>
+#include <stdarg.h>
 #include <stdbool.h>
 
 extern int	exit_status;
@@ -28,6 +29,7 @@ typedef enum CommandType
 {
     COM_ARGUMENT = 1,       // The argument of a command
     COM_NAME = 2,          // The name of the command to be executed
+    NULL_TOKEN = 32,       // placeholder for a token that doesn't exist
     RED_INPUT_SIGNAL = 3,  // A signal to redirect input ("<")
     RED_INPUT_FILE = 4,    // The file to redirect input from
     RED_OUTPUT_SIGNAL = 5, // A signal to redirect output (">")
@@ -87,4 +89,7 @@ void	get_prompt(t_env *env);
 int		ft_arrlen(char **arr);
 bool	check_tokens(int *cmd);
 int	    *tokenization(char **cmd);
+char	*ft_strjoin_many(int num_args, ...);
+void	expand_env_vars(char **cmd, int *tokens, t_env *env);
+char *ft_strjoin_char(const char *s1, const char *s2, char c);
 #endif

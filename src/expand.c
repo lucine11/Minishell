@@ -6,50 +6,104 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 02:35:33 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:06:47 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	expand(char **cmd, int *tokens, t_env *env)
+static char	*replace_var(char *token, int *start_idx, t_env *env)
 {
-	int	i;
-	int	j;
+	t_env	*env_var;
+	char	*prefix;
+	char	*value;
+	char	*suffix;
+	char	*name;
+	int		end_var_name = *start_idx + 1;
 
-	i = 0;
-	while (cmd[i])
+	while ((token[end_var_name] && ft_isalnum(token[end_var_name])) || (token[end_var_name] && token[end_var_name] == '_'))
+		end_var_name++;
+
+	name = ft_substr(token, *start_idx + 1, end_var_name - *start_idx - 1);
+	env_var = ft_list_search(env, name);
+	prefix = ft_substr(token, 0, *start_idx);
+	
+	if (env_var && env_var->value) 
 	{
-		if (ft_strchr(cmd[i], '$'))
-			cmd[i] = expansion(cmd[i], env);
-		j = 0;
-		while (cmd[i][j])
-			if (cmd[i][j] != ' ' || !(cmd[i][j] >= 9 && cmd[i][j] <= 13))
-				break ;
-		if (!cmd[i][j])
-			tokens[i] = ' ';
-		i++;
+		value = ft_strdup(env_var->value);
+	} 
+	else 
+	{
+		value = ft_strdup("");
 	}
-}
-static char	*expansion(char *tok, t_env *env)
-{
-	int		i;
-	int		state;
+	suffix = ft_substr(token, end_var_name, 1000);
+	free(token);
 
-	i = 0;
-	state = 0;
-	while (i != -1 && tok[i])
+	token = ft_strjoin_many(3, prefix, value, suffix);
+	*start_idx = ft_strlen(prefix) + ft_strlen(value);
+
+	free(prefix);
+	free(value);
+	free(suffix);
+	free(name);
+	
+	return (token);
+}
+
+char	*replace_var_wrongname(char *tok, int *i)
+{
+	char	*tmp = ft_substr(tok, *i + 2, ft_strlen(tok) - *i - 2);
+	char	*new_tok = ft_strjoin_char(ft_substr(tok, 0, *i), tmp, ' ');
+	free(tok);
+	free(tmp);
+	*i = ft_strlen(new_tok);
+	return new_tok;
+}
+
+char	*replace_var_exitcode(char *tok, int *i)
+{
+	char	*tmp = ft_substr(tok, *i + 2, ft_strlen(tok) - *i - 2);
+	char	*itoa_exitcode = ft_itoa(exit_status);
+	char	*new_tok = ft_strjoin_many(3, ft_substr(tok, 0, *i), itoa_exitcode, tmp);
+	free(tok);
+	free(tmp);
+	free(itoa_exitcode);
+	*i = ft_strlen(new_tok);
+	return new_tok;
+}
+
+static char	*replace_env_var(char *token, t_env *env)
+{
+	int		state = 0;
+	int		i = 0;
+	while (token[i])
 	{
-		chg_qte_state(&state, tok[i]);
-		if (tok[i] == '$' && state != 1 && tok[i + 1] == '?')
+		change_value_state(&state, token[i]);
+		if (token[i] == '$' && state != 1 && token[i + 1] != 0) 
 		{
-            //replece it before checking ..
-			if (tok[i] == '$' || tok[i] == '"' || tok[i] == '\'')
-				continue ;
-			else if (tok[i] == 0)
-				break ;
+			if (ft_isalpha(token[i + 1]) || token[i + 1] == '_') 
+			{
+				token = replace_var(token, &i, env);
+				if (!token[i] || token[i] == '$' || token[i] == '"' || token[i] == '\'')
+					i--;
+			}
+			else if (!ft_isalnum(token[i + 1]) && token[i + 1] != '_')
+				token = replace_var_wrongname(token, &i);
 		}
 		i++;
 	}
-	return (tok);
+	return (token);
+}
+
+void	expand_env_vars(char **cmd, int *tokens, t_env *env)
+{
+	int i = 0;
+	while (cmd[i])
+	{
+		if (ft_strchr(cmd[i], '$'))
+			cmd[i] = replace_env_var(cmd[i], env);
+		if (!cmd[i][0] || cmd[i][0] == ' ')
+			tokens[i] = NULL_TOKEN;
+		i++;
+	}
 }

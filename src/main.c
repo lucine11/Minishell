@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/27 03:33:30 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:22:22 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void free_args(char **args)
     }
     free(args);
 }
-
 int main(int ac, char **av, char **envp)
 {
     (void)ac;
@@ -155,6 +154,8 @@ int main(int ac, char **av, char **envp)
                 continue;
             }
 
+            expand_env_vars(args, token_types, env_list);
+
             for(i = 0; args[i] != NULL; i++) 
             {
                 printf("Argument: %s, Type: %d\n", args[i], token_types[i]);
@@ -170,6 +171,58 @@ int main(int ac, char **av, char **envp)
     // free_env_list(env_list);
     return 0;
 }
+
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)ac;
+//     (void)av;
+
+//     char *line;
+//     t_token *tokens;
+//     t_env *env_list;
+//     char **args;
+//     int *token_types;
+//     int i;
+
+//     env_list = get_env_variables(envp);
+//     get_prompt(env_list);
+//     exit_status = 0;
+//     while (1) 
+//     {
+//         line = readline("$ ");
+//         if (*line) 
+//             add_history(line);
+
+//         tokens = breakdown_line(line);
+
+//         if (tokens)
+//         {
+//             char *parsed_line = parse_op(line);
+
+//             args = args_split(parsed_line);
+//             token_types = tokenization(args);
+
+//             if(token_types == NULL) {
+//                 printf("Tokenization error\n");
+//                 free(parsed_line);
+//                 continue;
+//             }
+
+//             for(i = 0; args[i] != NULL; i++) 
+//             {
+//                 printf("Argument: %s, Type: %d\n", args[i], token_types[i]);
+//             }
+
+//             printf("Parsed line: %s\n", parsed_line);
+//             free(parsed_line);
+
+//             print_tokens(tokens);
+//         }
+
+//     }
+//     // free_env_list(env_list);
+//     return 0;
+// }
 
 
 // int main(int ac, char **av, char **envp)
