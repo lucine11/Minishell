@@ -55,6 +55,16 @@ typedef struct s_env
 	struct s_env	*prev;
 }	t_env;
 
+typedef struct s_command
+{
+	char	**command_segments;
+	int		**token_types;
+	char	**original_commands;
+	int		*original_tokens;
+	int		com_count;
+	t_env	**env;
+}	t_command;
+
 t_token *parse_quotes(char *line);
 bool is_whitespace(char c);
 t_token	*breakdown_line(char *line);
