@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper_unctionss.c                                 :+:      :+:    :+:   */
+/*   helper_functionss.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:16:05 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 17:48:11 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:02:48 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,17 @@ char	*ft_strjoin_many(int num_args, ...)
 	int 	i;
 
 	va_start(ap, num_args);
-	res = ft_strdup("");  // Start with an empty string
+	res = ft_strdup("");
 	for (i = 0; i < num_args; i++)
 	{
 		arg = va_arg(ap, char*);
-		temp = ft_strjoin(res, arg); // Join current string and next argument
-		free(res); // Free old string
-		res = temp; // Update string
+		temp = ft_strjoin(res, arg);
+		free(res);
+		res = temp;
 	}
 	va_end(ap);
 	return (res);
 }
-
-#include <stdlib.h>
 
 char *ft_strjoin_char(const char *s1, const char *s2, char c)
 {
@@ -65,5 +63,5 @@ char *ft_strjoin_char(const char *s1, const char *s2, char c)
 
     new_str[i] = '\0';
 
-    return new_str;
+    return (new_str);
 }
