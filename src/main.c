@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 17:55:13 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:56:31 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ int main(int ac, char **av, char **envp)
 
             print_tokens(tokens);
         }
-
     }
     // free_env_list(env_list);
     return 0;

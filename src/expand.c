@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 17:06:47 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:57:35 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static char	*replace_var(char *token, int *start_idx, t_env *env)
 
 	while ((token[end_var_name] && ft_isalnum(token[end_var_name])) || (token[end_var_name] && token[end_var_name] == '_'))
 		end_var_name++;
-
 	name = ft_substr(token, *start_idx + 1, end_var_name - *start_idx - 1);
 	env_var = ft_list_search(env, name);
 	prefix = ft_substr(token, 0, *start_idx);
@@ -57,7 +56,7 @@ char	*replace_var_wrongname(char *tok, int *i)
 	free(tok);
 	free(tmp);
 	*i = ft_strlen(new_tok);
-	return new_tok;
+	return (new_tok);
 }
 
 char	*replace_var_exitcode(char *tok, int *i)
@@ -69,7 +68,7 @@ char	*replace_var_exitcode(char *tok, int *i)
 	free(tmp);
 	free(itoa_exitcode);
 	*i = ft_strlen(new_tok);
-	return new_tok;
+	return (new_tok);
 }
 
 static char	*replace_env_var(char *token, t_env *env)
