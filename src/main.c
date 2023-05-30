@@ -118,53 +118,107 @@ void free_args(char **args)
     }
     free(args);
 }
+
 int main(int ac, char **av, char **envp)
 {
-    (void)envp;
     (void)ac;
     (void)av;
+
     char *line;
     t_token *tokens;
+    t_env *env_list;
     char **args;
-    int *comtype;
+    int *token_types;
+    int i;
 
+    env_list = get_env_variables(envp);
+    get_prompt(env_list);
     exit_status = 0;
-    // check_args(ac, av);
     while (1) 
     {
-        line = readline("minishell$ ");
+        line = readline("$ ");
         if (*line) 
             add_history(line);
+
         tokens = breakdown_line(line);
+
         if (tokens)
         {
-            while (tokens != NULL)
-            {
-                tokens->value = parse_op(tokens->value);
-                args = args_split(tokens->value);
+            char *parsed_line = parse_op(line);
 
-                comtype = tokenization(args);
-                if (comtype) 
-                {
-                    int i = 0;
-                    while (args[i]) 
-                    {
-                        printf("Arg[%d]: %s\n", i, args[i]);
-                        printf("Comtype[%d]: %d\n", i, comtype[i]);
-                        i++;
-                    }
-                    free(comtype);
-                } 
-                else 
-                    printf("Tokenization failed.\n");
-                tokens = tokens->next;
-                free_args(args);
+            args = args_split(parsed_line);
+            token_types = tokenization(args);
+
+            if(token_types == NULL) {
+                printf("Tokenization error\n");
+                free(parsed_line);
+                continue;
             }
+
+            for(i = 0; args[i] != NULL; i++) 
+            {
+                printf("Argument: %s, Type: %d\n", args[i], token_types[i]);
+            }
+
+            printf("Parsed line: %s\n", parsed_line);
+            free(parsed_line);
+
+            print_tokens(tokens);
         }
-        free(line);
+
     }
+    // free_env_list(env_list);
     return 0;
 }
+
+
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)envp;
+//     (void)ac;
+//     (void)av;
+//     char *line;
+//     t_token *tokens;
+//     char **args;
+//     int *comtype;
+
+//     exit_status = 0;
+//     // check_args(ac, av);
+//     while (1) 
+//     {
+//         line = readline("minishell$ ");
+//         if (*line) 
+//             add_history(line);
+//         tokens = breakdown_line(line);
+//         if (tokens)
+//         {
+//             while (tokens != NULL)
+//             {
+//                 tokens->value = parse_op(tokens->value);
+//                 args = args_split(tokens->value);
+
+//                 comtype = tokenization(args);
+//                 if (comtype) 
+//                 {
+//                     int i = 0;
+//                     while (args[i]) 
+//                     {
+//                         printf("Arg[%d]: %s\n", i, args[i]);
+//                         printf("Comtype[%d]: %d\n", i, comtype[i]);
+//                         i++;
+//                     }
+//                     free(comtype);
+//                 } 
+//                 else 
+//                     printf("Tokenization failed.\n");
+//                 tokens = tokens->next;
+//                 free_args(args);
+//             }
+//         }
+//         free(line);
+//     }
+//     return 0;
+// }
 
 
 // int main(int ac, char **av, char **envp)
