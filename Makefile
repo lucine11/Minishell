@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
+#    By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/27 03:41:29 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/31 14:26:33 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ LIBFT_DIR = ./libft
 
 INCLUDES = -I$(LIBFT_DIR)
 SRC_DIR = ./src/
+SRC_DIR2 = ./builtins/
 OBJ_DIR = ./obj/
 
 RED=\033[0;31m
 GREEN=\033[0;32m
 NC=\033[0m
 
-SRCS = $(wildcard $(SRC_DIR)*.c)
-OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+SRCS = $(wildcard $(SRC_DIR)*.c) $(wildcard $(SRC_DIR2)*.c)
+OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(patsubst $(SRC_DIR2)%.c,$(OBJ_DIR)%.o,$(SRCS)))
 DEPS = $(OBJS:.o=.d)
 
 all: $(NAME)
@@ -46,7 +47,13 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "     | |\/| | | '_ \| |\___ \| '_ \ / _ \ | |"
 	@echo "     | |  | | | | | | |____) | | | |  __/ | |"
 	@echo "     |_|  |_|_|_| |_|_|_____/|_| |_|\___|_|_|"
+
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(@D)
+	@echo "$(GREEN)Compiling $<...$(NC)"
+	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+
+$(OBJ_DIR)%.o: $(SRC_DIR2)%.c
 	@mkdir -p $(@D)
 	@echo "$(GREEN)Compiling $<...$(NC)"
 	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
