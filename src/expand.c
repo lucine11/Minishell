@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 17:57:35 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:48:25 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,18 @@ static char	*replace_var(char *token, int *start_idx, t_env *env)
 	name = ft_substr(token, *start_idx + 1, end_var_name - *start_idx - 1);
 	env_var = ft_list_search(env, name);
 	prefix = ft_substr(token, 0, *start_idx);
-	
 	if (env_var && env_var->value) 
-	{
 		value = ft_strdup(env_var->value);
-	} 
 	else 
-	{
 		value = ft_strdup("");
-	}
 	suffix = ft_substr(token, end_var_name, 1000);
 	free(token);
-
 	token = ft_strjoin_many(3, prefix, value, suffix);
 	*start_idx = ft_strlen(prefix) + ft_strlen(value);
-
 	free(prefix);
 	free(value);
 	free(suffix);
 	free(name);
-	
 	return (token);
 }
 
