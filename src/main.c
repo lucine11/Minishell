@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:31:26 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:34:03 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,6 @@ int main(int ac, char **av, char **envp)
         if (*line) 
             add_history(line);
         command = command_ini(line, env_list);
-
-        // Error handling for command initialization failure
         if (!command) 
         {
             printf("Command initialization failed.\n");
