@@ -6,12 +6,36 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 10:39:43 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:18:40 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:19:52 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
+static char	*remove_them(char *token, int *i)
+{
+	char	*new_tok;
+	char	quote;
+	char	*tmp[2];
+	int		j;
+
+	quote = token[*i];
+	j = *i + 1;
+	while (token[j] != quote)
+		j++;
+	tmp[0] = ft_substr(token, 0, *i);
+	tmp[1] = ft_substr(token, *i + 1, j - *i - 1);
+	new_tok = ft_strjoin(tmp[0], tmp[1]);
+	free (tmp[0]);
+	free (tmp[1]);
+	*i = j - 2;
+	tmp[0] = ft_strjoin(new_tok, token + j + 1);
+	free (token);
+	free (new_tok);
+	token = ft_strdup(tmp[0]);
+	free (tmp[0]);
+	return (token);
+}
 
 static char	*remove_token_quotes(char *token)
 {
