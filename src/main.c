@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:47:34 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:38:32 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,17 +138,30 @@ int main(int ac, char **av, char **envp)
             printf("Command initialization failed.\n");
             continue;
         }
-        i = 0;
-        while (command->original_commands[i])
+        
+        if (execute_builtin(command->original_commands, command->original_tokens, env_list))
         {
-            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-            i++;
+            if (!execute_builtin(command->original_commands, command->original_tokens, env_list))
+            {
+                printf("Builtin command execution failed.\n");
+            }
         }
+        else
+        {
+            i = 0;
+            while (command->original_commands[i])
+            {
+                printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
+                i++;
+            }
+        }
+
         free_command(command);
     }
     // free_env_list(env_list);
     return 0;
 }
+
 
 void free_args(char **args)
 {
