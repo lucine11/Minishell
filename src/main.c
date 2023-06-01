@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:17:50 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:24:33 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void print_tokens(t_token *tokens)
 // }
 void free_command(t_command *command) 
 {
-    // Add your specific freeing routines for each dynamically allocated member in command struct
     ft_free((void **)command->original_commands);
     free(command->original_tokens);
     free(command);
