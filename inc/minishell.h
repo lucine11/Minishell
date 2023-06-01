@@ -92,4 +92,8 @@ int	    *tokenization(char **cmd);
 char	*ft_strjoin_many(int num_args, ...);
 void	expand_env_vars(char **cmd, int *tokens, t_env *env);
 char *ft_strjoin_char(const char *s1, const char *s2, char c);
+void	del_quotes(char **com);
+void	ft_free(void **array);
+t_command	*command_ini(char *op_com, t_env *env);
+
 #endif

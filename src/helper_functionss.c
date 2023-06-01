@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functionss.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:16:05 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/31 03:50:11 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:51:41 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,17 @@ char *ft_strjoin_char(const char *s1, const char *s2, char c)
         new_str[i++] = *s2++;
     new_str[i] = '\0';
     return (new_str);
+}
+
+void	ft_free(void **array)
+{
+	int	i;
+
+	i = 0;
+	while (array && array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

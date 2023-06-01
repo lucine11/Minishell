@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 15:17:31 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:17:50 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,51 @@ void print_tokens(t_token *tokens)
 // 		exit (127);
 // 	}
 // }
+void free_command(t_command *command) 
+{
+    // Add your specific freeing routines for each dynamically allocated member in command struct
+    ft_free((void **)command->original_commands);
+    free(command->original_tokens);
+    free(command);
+}
 
-void free_args(char **args)
+int main(int ac, char **av, char **envp)
+{
+    (void)ac;
+    (void)av;
+
+    char *line;
+    t_command *command;
+    t_env *env_list;
+    int i;
+
+    env_list = get_env_variables(envp);
+    get_prompt(env_list);
+    exit_status = 0;
+    while (42) 
+    {
+        line = readline("$ ");
+        if (*line) 
+            add_history(line);
+        command = command_ini(line, env_list);
+
+        // Error handling for command initialization failure
+        if (!command) 
+        {
+            printf("Command initialization failed. Please check your input.\n");
+            continue;
+        }
+        for(i = 0; command->original_commands[i] != NULL; i++) 
+        {
+            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
+        }
+        free_command(command);
+    }
+    // free_env_list(env_list);
+    return 0;
+}
+
+/*void free_args(char **args)
 {
     int i = 0;
     while(args[i])
@@ -170,7 +213,7 @@ int main(int ac, char **av, char **envp)
     // free_env_list(env_list);
     return 0;
 }
-
+*/
 // int main(int ac, char **av, char **envp)
 // {
 //     (void)ac;
