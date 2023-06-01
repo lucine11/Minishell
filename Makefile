@@ -6,7 +6,7 @@
 #    By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/05/31 14:26:33 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/05/31 14:48:09 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ NC=\033[0m
 
 SRCS = $(wildcard $(SRC_DIR)*.c) $(wildcard $(SRC_DIR2)*.c)
 OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(patsubst $(SRC_DIR2)%.c,$(OBJ_DIR)%.o,$(SRCS)))
+
 DEPS = $(OBJS:.o=.d)
 
 all: $(NAME)
@@ -57,7 +58,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR2)%.c
 	@mkdir -p $(@D)
 	@echo "$(GREEN)Compiling $<...$(NC)"
 	$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
-
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 

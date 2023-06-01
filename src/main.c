@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/30 17:56:31 by lahamoun         ###   ########.fr       */
+/*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
+/*   Updated: 2023/06/01 15:17:31 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int main(int ac, char **av, char **envp)
     env_list = get_env_variables(envp);
     get_prompt(env_list);
     exit_status = 0;
-    while (1) 
+    while (42) 
     {
         line = readline("$ ");
         if (*line) 
