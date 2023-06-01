@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/05/31 03:48:25 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:41:34 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ char	*replace_var_wrongname(char *tok, int *i)
 	return (new_tok);
 }
 
-char	*replace_var_exitcode(char *tok, int *i)
-{
-	char	*tmp = ft_substr(tok, *i + 2, ft_strlen(tok) - *i - 2);
-	char	*itoa_exitcode = ft_itoa(exit_status);
-	char	*new_tok = ft_strjoin_many(3, ft_substr(tok, 0, *i), itoa_exitcode, tmp);
-	free(tok);
-	free(tmp);
-	free(itoa_exitcode);
-	*i = ft_strlen(new_tok);
-	return (new_tok);
-}
+// char	*replace_var_exitcode(char *tok, int *i)
+// {
+// 	char	*tmp = ft_substr(tok, *i + 2, ft_strlen(tok) - *i - 2);
+// 	char	*itoa_exitcode = ft_itoa(exit_status);
+// 	char	*new_tok = ft_strjoin_many(3, ft_substr(tok, 0, *i), itoa_exitcode, tmp);
+// 	free(tok);
+// 	free(tmp);
+// 	free(itoa_exitcode);
+// 	*i = ft_strlen(new_tok);
+// 	return (new_tok);
+// }
 
 static char	*replace_env_var(char *token, t_env *env)
 {

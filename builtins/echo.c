@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:44:36 by aelbouaa          #+#    #+#             */
-/*   Updated: 2023/05/31 22:43:55 by aelbouaa         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:43:53 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void    ft_echo(char **arg)
 		write (1, "\n", 1);	
 	}
 }
-int main(int ac, char **av)
-{
-    (void)ac;
-    ft_echo(av);
-}
+// int main(int ac, char **av)
+// {
+//     (void)ac;
+//     ft_echo(av);
+// }
