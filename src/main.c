@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:24:33 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:31:26 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int main(int ac, char **av, char **envp)
         // Error handling for command initialization failure
         if (!command) 
         {
-            printf("Command initialization failed. Please check your input.\n");
+            printf("Command initialization failed.\n");
             continue;
         }
         for(i = 0; command->original_commands[i] != NULL; i++) 
@@ -150,7 +150,7 @@ int main(int ac, char **av, char **envp)
     return 0;
 }
 
-/*void free_args(char **args)
+void free_args(char **args)
 {
     int i = 0;
     while(args[i])
@@ -160,6 +160,7 @@ int main(int ac, char **av, char **envp)
     }
     free(args);
 }
+/*
 int main(int ac, char **av, char **envp)
 {
     (void)ac;
