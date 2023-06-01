@@ -6,12 +6,11 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:44:36 by aelbouaa          #+#    #+#             */
-/*   Updated: 2023/06/01 01:43:53 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 02:00:50 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-
 
 int ft_strcmp(char *s1, char *s2)
 {
@@ -43,7 +42,6 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-
 void    ft_echo(char **arg)
 {
 	int x;
@@ -67,8 +65,8 @@ void    ft_echo(char **arg)
 		write (1, "\n", 1);	
 	}
 }
-// int main(int ac, char **av)
-// {
-//     (void)ac;
-//     ft_echo(av);
-// }
+int main(int ac, char **av)
+{
+    (void)ac;
+    ft_echo(av);
+}
