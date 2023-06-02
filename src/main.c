@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 15:46:35 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:58:57 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int main(int ac, char **av, char **envp)
     exit_status = 0;
     while (42) 
     {
-        line = readline("$ ");
+        line = readline("MINI$ ");
         if (*line) 
             add_history(line);
         tokens = breakdown_line(line);
