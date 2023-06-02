@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 18:38:32 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 10:41:27 by aelbouaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int main(int ac, char **av, char **envp)
     exit_status = 0;
     while (42) 
     {
-        line = readline("$ ");
+        line = readline("MINI$ ");
         if (*line) 
             add_history(line);
         command = command_ini(line, env_list);
@@ -141,10 +141,10 @@ int main(int ac, char **av, char **envp)
         
         if (execute_builtin(command->original_commands, command->original_tokens, env_list))
         {
-            if (!execute_builtin(command->original_commands, command->original_tokens, env_list))
-            {
-                printf("Builtin command execution failed.\n");
-            }
+            // if (!execute_builtin(command->original_commands, command->original_tokens, env_list))
+            // {
+            //     printf("Builtin command execution failed.\n");
+            // }
         }
         else
         {
