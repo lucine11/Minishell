@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 18:46:45 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:53:27 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void print_command_segments(char ***command_segments) {
     }
     int i = 0;
     while (command_segments[i]) {
-        printf("Segment %d:\n", i);
+        printf("==>Segment %d:\n", i);
         int j = 0;
         while (command_segments[i][j]) {
             printf("\tCommand %d: %s\n", j, command_segments[i][j]);
@@ -158,12 +158,14 @@ int main(int ac, char **av, char **envp)
             continue;
         }
         
-        int i = 0;
+        // int i = 0;
         // while (command->original_command[i])
         // {
         //     printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
         //     i++;
         // }
+        printf("---------->[command segments test]<---------\n");
+        print_command_segments(command->command_segments);
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");
