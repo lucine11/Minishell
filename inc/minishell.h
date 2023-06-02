@@ -97,6 +97,6 @@ void	ft_free(void **array);
 t_command	*command_ini(char *op_com, t_env *env);
 bool execute_builtin(char **cmds, int *toks, t_env *env);
 void    ft_pwd(void);
-
+void    ft_echo(char **cmd, int *tok);
 
 #endif

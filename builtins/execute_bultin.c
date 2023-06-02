@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:19:59 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 18:47:32 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:41:29 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool execute_builtin(char **cmds, int *toks, t_env *env)
     }
     else if (!ft_strcmp(cmds[i], "echo"))
     {
-        //
+        ft_echo(cmds, toks);
     }
     else if (!ft_strcmp(cmds[i], "cd"))
     {

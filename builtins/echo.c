@@ -6,67 +6,56 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 16:44:36 by aelbouaa          #+#    #+#             */
-/*   Updated: 2023/06/01 15:18:22 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:54:55 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int ft_strcmp(char *s1, char *s2)
+int		check_for_n(char *cmd)
 {
-	int i = 0;
-	
-	while(s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-	{	
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
+	int x;
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	x = 1;
+	if (!cmd)
+		return (0);
+	while (cmd[x])
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		if (cmd[0] != '-')
+			return (0);
+		if (cmd[x] != 'n')
+			return (0);
+		x++;
 	}
+	return (1);
+	
 }
 
-void    ft_echo(char **arg)
+void    ft_echo(char **cmd, int *tok)
 {
 	int x;
 
 	x = 0;
-	if (ft_strcmp(arg[1], "-n"))
+    cmd++;
+	(void)tok;
+	if (cmd[0] && ft_strncmp(cmd[0], "-n", 2) == 0)
 	{
 		x = 1;
-		arg++;	
+		cmd++;
+		while (check_for_n(*cmd))
+			cmd++;
 	}
-    arg++;
-    while (*arg)
+    while (*cmd)
     {
-        ft_putstr_fd(*arg, 1);
-		if (*(arg + 1) != NULL)
+        ft_putstr_fd(*cmd, 1);
+		if (*(cmd + 1) != NULL)
 			write (1, " ", 1);
-        arg++;
+        cmd++;
     }
 	if (x == 0)
 	{
 		write (1, "\n", 1);	
 	}
 }
-// int main(int ac, char **av)
-// {
-//     (void)ac;
-//     ft_echo(av);
-// }
+//
+//
