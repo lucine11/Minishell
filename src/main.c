@@ -6,7 +6,11 @@
 /*   By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/06/02 10:41:27 by aelbouaa         ###   ########.fr       */
+=======
+/*   Updated: 2023/06/02 13:50:00 by lahamoun         ###   ########.fr       */
+>>>>>>> bf46957e01c617888bd2e6eceb69bffe1667af3c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +126,7 @@ int main(int ac, char **av, char **envp)
     char *line;
     t_command *command;
     t_env *env_list;
+    t_token *tokens;
     int i;
 
     env_list = get_env_variables(envp);
@@ -132,6 +137,12 @@ int main(int ac, char **av, char **envp)
         line = readline("MINI$ ");
         if (*line) 
             add_history(line);
+        tokens = breakdown_line(line);
+        if (!tokens)
+        {
+            printf("Syntax error in line.\n");
+            continue;
+        }
         command = command_ini(line, env_list);
         if (!command) 
         {
@@ -139,28 +150,33 @@ int main(int ac, char **av, char **envp)
             continue;
         }
         
-        if (execute_builtin(command->original_commands, command->original_tokens, env_list))
+        i = 0;
+        while (command->original_commands[i])
         {
+<<<<<<< HEAD
             // if (!execute_builtin(command->original_commands, command->original_tokens, env_list))
             // {
             //     printf("Builtin command execution failed.\n");
             // }
+=======
+            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
+            i++;
+>>>>>>> bf46957e01c617888bd2e6eceb69bffe1667af3c
         }
-        else
+        if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
-            i = 0;
-            while (command->original_commands[i])
-            {
-                printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-                i++;
-            }
+            printf("Executing builtin.\n");
+        } 
+        else 
+        {
+            printf("Command is not a builtin.\n");
         }
-
         free_command(command);
     }
     // free_env_list(env_list);
     return 0;
 }
+
 
 
 void free_args(char **args)

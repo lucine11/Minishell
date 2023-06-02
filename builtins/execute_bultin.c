@@ -6,7 +6,7 @@
 /*   By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:19:59 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 10:57:12 by aelbouaa         ###   ########.fr       */
+/*   Updated: 2023/06/02 15:19:52 by aelbouaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ bool execute_builtin(char **cmds, int *toks, t_env *env)
         return false;
     }
 
-    return true;
+    return false;
 }
