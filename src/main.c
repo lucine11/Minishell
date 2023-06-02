@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 18:43:04 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:46:45 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,22 @@ void free_command(t_command *command)
     free(command->original_tokens);
     free(command);
 }
+void print_command_segments(char ***command_segments) {
+    if (!command_segments) {
+        printf("command_segments is NULL\n");
+        return;
+    }
+    int i = 0;
+    while (command_segments[i]) {
+        printf("Segment %d:\n", i);
+        int j = 0;
+        while (command_segments[i][j]) {
+            printf("\tCommand %d: %s\n", j, command_segments[i][j]);
+            j++;
+        }
+        i++;
+    }
+}
 
 int main(int ac, char **av, char **envp)
 {
@@ -143,11 +159,11 @@ int main(int ac, char **av, char **envp)
         }
         
         int i = 0;
-        while (command->original_command[i])
-        {
-            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-            i++;
-        }
+        // while (command->original_command[i])
+        // {
+        //     printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
+        //     i++;
+        // }
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");
