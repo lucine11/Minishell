@@ -1,18 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/06/02 10:41:27 by aelbouaa         ###   ########.fr       */
-=======
-/*   Updated: 2023/06/02 13:50:00 by lahamoun         ###   ########.fr       */
->>>>>>> bf46957e01c617888bd2e6eceb69bffe1667af3c
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../inc/minishell.h"
 #include <readline/readline.h>
@@ -149,20 +135,7 @@ int main(int ac, char **av, char **envp)
             printf("Command initialization failed.\n");
             continue;
         }
-        
-        i = 0;
-        while (command->original_commands[i])
-        {
-<<<<<<< HEAD
-            // if (!execute_builtin(command->original_commands, command->original_tokens, env_list))
-            // {
-            //     printf("Builtin command execution failed.\n");
-            // }
-=======
-            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-            i++;
->>>>>>> bf46957e01c617888bd2e6eceb69bffe1667af3c
-        }
+       
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");
