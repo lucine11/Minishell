@@ -29,7 +29,7 @@ typedef enum CommandType
 {
     COM_ARGUMENT = 1,       // The argument of a command
     COM_NAME = 2,          // The name of the command to be executed
-    NULL_TOKEN = 32,       // placeholder for a token that doesn't exist
+    NULL_TOKEN = 0,       // placeholder for a token that doesn't exist
     RED_INPUT_SIGNAL = 3,  // A signal to redirect input ("<")
     RED_INPUT_FILE = 4,    // The file to redirect input from
     RED_OUTPUT_SIGNAL = 5, // A signal to redirect output (">")
@@ -59,7 +59,7 @@ typedef struct s_env
 
 typedef struct s_command
 {
-	char	**command_segments;
+	char	***command_segments;
 	int		**token_types;
 	char	**original_commands;
 	int		*original_tokens;

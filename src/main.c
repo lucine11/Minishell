@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 15:58:57 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:43:04 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ int main(int ac, char **av, char **envp)
     t_command *command;
     t_env *env_list;
     t_token *tokens;
-    //int i;
     
     env_list = get_env_variables(envp);
     get_prompt(env_list);
@@ -143,12 +142,12 @@ int main(int ac, char **av, char **envp)
             continue;
         }
         
-        // i = 0;
-        // while (command->original_commands[i])
-        // {
-        //     printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-        //     i++;
-        // }
+        int i = 0;
+        while (command->original_command[i])
+        {
+            printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
+            i++;
+        }
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");

@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aelbouaa <aelbouaa@student.42.fr>          +#+  +:+       +#+         #
+#    By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/06/02 11:23:56 by aelbouaa         ###   ########.fr        #
+#    Updated: 2023/06/02 18:13:56 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 NAME = minishell
 
@@ -42,12 +42,12 @@ $(NAME): $(LIBFT) $(OBJS)
 	@echo "$(GREEN)Done!$(NC)"
 	@echo "$(GREEN)"
 	
-	@echo "     						 __  __ _       _  _____ _          _ _ "
-	@echo "     						|  \/  (_)     (_)/ ____| |        | | |"
-	@echo "     						| \  / |_ _ __  _| (___ | |__   ___| | |"
-	@echo "     						| |\/| | | '_ \| |\___ \| '_ \ / _ \ | |"
-	@echo "     						| |  | | | | | | |____) | | | |  __/ | |"
-	@echo "     						|_|  |_|_|_| |_|_|_____/|_| |_|\___|_|_|"
+	@echo "     	 __  __ _       _  _____ _          _ _ "
+	@echo "     	|  \/  (_)     (_)/ ____| |        | | |"
+	@echo "     	| \  / |_ _ __  _| (___ | |__   ___| | |"
+	@echo "     	| |\/| | | '_ \| |\___ \| '_ \ / _ \ | |"
+	@echo "     	| |  | | | | | | |____) | | | |  __/ | |"
+	@echo "     	|_|  |_|_|_| |_|_|_____/|_| |_|\___|_|_|"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(@D)
