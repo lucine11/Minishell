@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:19:59 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 18:42:48 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:47:32 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ bool execute_builtin(char **cmds, int *toks, t_env *env)
         return false;
     }
 
-    return true;
+    return false;
 }
