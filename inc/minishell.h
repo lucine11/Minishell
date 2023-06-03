@@ -18,6 +18,7 @@
 #include "../libft/libft.h"
 #include <unistd.h>
 #include <stdarg.h>
+#include <fcntl.h>
 #include <stdbool.h>
 
 extern int	exit_status;
@@ -99,4 +100,5 @@ bool execute_builtin(char **cmds, int *toks, t_env *env);
 void    ft_pwd(void);
 void    ft_echo(char **cmd, int *tok);
 int **split_tokens(int *original_tokens);
+void handle_redirections(t_command *command);
 #endif

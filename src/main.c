@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/03 01:13:44 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/03 03:07:47 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,18 +185,11 @@ int main(int ac, char **av, char **envp)
             printf("Command initialization failed.\n");
             continue;
         }
-        
-        // int i = 0;
-        // while (command->original_command[i])
-        // {
-        //     printf("parsed line: %s, Type: %d\n", command->original_commands[i], command->original_tokens[i]);
-        //     i++;
-        // }
         printf("---------->[command segments test]<---------\n");
         print_command_segments(command->command_segments);
         printf("---------->[token types test]<---------\n");
         print_token_types(command->token_types);
-
+        handle_redirections(command);
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");
