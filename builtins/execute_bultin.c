@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:19:59 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/03 02:01:25 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/03 03:32:50 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool execute_builtin(char **cmds, int *toks, t_env *env)
     if (!ft_strcmp(cmds[i], "pwd"))
     {
        ft_pwd();
-       return true;
+       return (true);
     }
     else if (!ft_strcmp(cmds[i], "env"))
     {
