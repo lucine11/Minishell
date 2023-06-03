@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 18:53:27 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/03 01:13:44 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,13 @@ void free_command(t_command *command)
     free(command->original_tokens);
     free(command);
 }
+void free_tokens(t_command *command)
+{
+    for (int i = 0; command->token_types[i]; i++)
+        free(command->token_types[i]);
+    free(command->token_types);
+}
+
 void print_command_segments(char ***command_segments) {
     if (!command_segments) {
         printf("command_segments is NULL\n");
@@ -124,6 +131,27 @@ void print_command_segments(char ***command_segments) {
         int j = 0;
         while (command_segments[i][j]) {
             printf("\tCommand %d: %s\n", j, command_segments[i][j]);
+            j++;
+        }
+        i++;
+    }
+}
+
+void print_token_types(int **token_types) 
+{
+    if (!token_types) 
+    {
+        printf("token_types is NULL\n");
+        return;
+    }
+    int i = 0;
+    while (token_types[i]) 
+    {
+        printf("==>Segment %d:\n", i);
+        int j = 0;
+        while (token_types[i][j]) 
+        {
+            printf("\tToken %d: %d\n", j, token_types[i][j]);
             j++;
         }
         i++;
@@ -166,11 +194,15 @@ int main(int ac, char **av, char **envp)
         // }
         printf("---------->[command segments test]<---------\n");
         print_command_segments(command->command_segments);
+        printf("---------->[token types test]<---------\n");
+        print_token_types(command->token_types);
+
         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
         {
             printf("Executing builtin.\n");
         } 
         free_command(command);
+        
     }
     return 0;
 }

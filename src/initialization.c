@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:24:39 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/02 18:33:24 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/03 01:10:01 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,9 @@ t_command	*command_ini(char *op_com, t_env *env)
 	del_quotes(command->original_commands);
 	command->command_segments = split_commands(command->original_commands, command->original_tokens);
 	if (!command->command_segments)
-	{
 		printf("command segments initialization filed");
-	}
-	
+	command->token_types = split_tokens(command->original_tokens);
+	if (!command->token_types)
+		printf("token type initialization filed");
 	return (command);
 }
-
