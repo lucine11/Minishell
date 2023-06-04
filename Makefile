@@ -6,12 +6,12 @@
 #    By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/06/02 18:13:56 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/06/04 01:12:20 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 NAME = minishell
 

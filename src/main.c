@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/03 03:07:47 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/04 00:36:32 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,68 +137,68 @@ void print_command_segments(char ***command_segments) {
     }
 }
 
-void print_token_types(int **token_types) 
-{
-    if (!token_types) 
-    {
-        printf("token_types is NULL\n");
-        return;
-    }
-    int i = 0;
-    while (token_types[i]) 
-    {
-        printf("==>Segment %d:\n", i);
-        int j = 0;
-        while (token_types[i][j]) 
-        {
-            printf("\tToken %d: %d\n", j, token_types[i][j]);
-            j++;
-        }
-        i++;
-    }
-}
+// void print_token_types(int **token_types) 
+// {
+//     if (!token_types) 
+//     {
+//         printf("token_types is NULL\n");
+//         return;
+//     }
+//     int i = 0;
+//     while (token_types[i]) 
+//     {
+//         printf("==>Segment %d:\n", i);
+//         int j = 0;
+//         while (token_types[i][j]) 
+//         {
+//             printf("\tToken %d: %d\n", j, token_types[i][j]);
+//             j++;
+//         }
+//         i++;
+//     }
+// }
 
-int main(int ac, char **av, char **envp)
-{
-    (void)ac;
-    (void)av;
+// int main(int ac, char **av, char **envp)
+// {
+//     (void)ac;
+//     (void)av;
 
-    char *line;
-    t_command *command;
-    t_env *env_list;
-    t_token *tokens;
+//     char *line;
+//     t_command *command;
+//     t_env *env_list;
+//     t_token *tokens;
     
-    env_list = get_env_variables(envp);
-    get_prompt(env_list);
-    exit_status = 0;
-    while (42) 
-    {
-        line = readline("MINI$ ");
-        if (*line) 
-            add_history(line);
-        tokens = breakdown_line(line);
-        if(!tokens)
-            printf("error");
-        command = command_ini(line, env_list);
-        if (!command) 
-        {
-            printf("Command initialization failed.\n");
-            continue;
-        }
-        printf("---------->[command segments test]<---------\n");
-        print_command_segments(command->command_segments);
-        printf("---------->[token types test]<---------\n");
-        print_token_types(command->token_types);
-        handle_redirections(command);
-        if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
-        {
-            printf("Executing builtin.\n");
-        } 
-        free_command(command);
+//     env_list = get_env_variables(envp);
+//     get_prompt(env_list);
+//     exit_status = 0;
+//     while (42) 
+//     {
+//         line = readline("MINI$ ");
+//         if (*line) 
+//             add_history(line);
+//         tokens = breakdown_line(line);
+//         if(!tokens)
+//             printf("error");
+//         command = command_ini(line, env_list);
+//         if (!command) 
+//         {
+//             printf("Command initialization failed.\n");
+//             continue;
+//         }
+//         //printf("---------->[command segments test]<---------\n");
+//         //print_command_segments(command->command_segments);
+//         //printf("---------->[token types test]<---------\n");
+//         //print_token_types(command->token_types);
+//         //handle_redirections(command);
+//         if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
+//         {
+//             printf("Executing builtin.\n");
+//         } 
+//         free_command(command);
         
-    }
-    return 0;
-}
+//     }
+//     return 0;
+// }
 
 
 
@@ -212,7 +212,7 @@ void free_args(char **args)
     }
     free(args);
 }
-/*
+
 int main(int ac, char **av, char **envp)
 {
     (void)ac;
@@ -265,7 +265,7 @@ int main(int ac, char **av, char **envp)
     // free_env_list(env_list);
     return 0;
 }
-*/
+
 // int main(int ac, char **av, char **envp)
 // {
 //     (void)ac;

@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 00:39:14 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/03 03:22:51 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/04 01:15:57 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void handle_redirections(t_command *command)
                 }
                 close(fd);
 
-                // remove the temporary file
                 if (remove(temp_file_name) == -1) 
                 {
                     ft_printf(2, "remove");

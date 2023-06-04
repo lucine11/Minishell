@@ -60,10 +60,12 @@ typedef struct s_env
 
 typedef struct s_command
 {
+    char    ****command_array;
 	char	***command_segments;
 	int		**token_types;
 	char	**original_commands;
 	int		*original_tokens;
+    int     *hold_pid;
 	int		com_count;
 	t_env	**env;
 }	t_command;
@@ -101,4 +103,5 @@ void    ft_pwd(void);
 void    ft_echo(char **cmd, int *tok);
 int **split_tokens(int *original_tokens);
 void handle_redirections(t_command *command);
+int	com_cnt(char **args, int *tokens);
 #endif
