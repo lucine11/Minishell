@@ -104,4 +104,5 @@ void    ft_echo(char **cmd, int *tok);
 int **split_tokens(int *original_tokens);
 void handle_redirections(t_command *command);
 int	com_cnt(char **args, int *tokens);
+
 #endif
