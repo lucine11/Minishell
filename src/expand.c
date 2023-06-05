@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/04 01:11:55 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/04 22:32:10 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ char	*replace_var_exitcode(char *tok, int *i)
 	*i = ft_strlen(new_tok);
 	return (new_tok);
 }
-
-#include <stdio.h>
-#include <string.h>
 
 static char	*replace_env_var(char *token, t_env *env)
 {

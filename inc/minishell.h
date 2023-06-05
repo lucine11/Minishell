@@ -16,7 +16,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../libft/libft.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 #include <unistd.h>
+#include <sys/wait.h>
+# include <signal.h>
 #include <stdarg.h>
 #include <fcntl.h>
 #include <stdbool.h>
@@ -67,6 +71,7 @@ typedef struct s_command
 	int		*original_tokens;
     int     *hold_pid;
 	int		com_count;
+    int     pipeline[2][2];
 	t_env	**env;
 }	t_command;
 
@@ -104,5 +109,5 @@ void    ft_echo(char **cmd, int *tok);
 int **split_tokens(int *original_tokens);
 void handle_redirections(t_command *command);
 int	com_cnt(char **args, int *tokens);
-
+int heredoc_handler(t_command *command);
 #endif
