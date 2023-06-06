@@ -20,7 +20,8 @@
 #include <readline/history.h>
 #include <unistd.h>
 #include <sys/wait.h>
-# include <signal.h>
+#include <dirent.h>
+#include <signal.h>
 #include <stdarg.h>
 #include <fcntl.h>
 #include <stdbool.h>
@@ -71,6 +72,7 @@ typedef struct s_command
 	int		*original_tokens;
     int     *hold_pid;
 	int		com_count;
+    int     heredoc[15][2];
     int     pipeline[2][2];
 	t_env	**env;
 }	t_command;
@@ -102,12 +104,26 @@ void	expand_env_vars(char **cmd, int *tokens, t_env *env);
 char *ft_strjoin_char(const char *s1, const char *s2, char c);
 void	del_quotes(char **com);
 void	ft_free(void **array);
+void	ft_list_clear(t_env **env);
 t_command	*command_ini(char *op_com, t_env *env);
 bool execute_builtin(char **cmds, int *toks, t_env *env);
 void    ft_pwd(void);
 void    ft_echo(char **cmd, int *tok);
 int **split_tokens(int *original_tokens);
-void handle_redirections(t_command *command);
 int	com_cnt(char **args, int *tokens);
 int heredoc_handler(t_command *command);
+int	check_env_buil(char **cmd_array, int *token_array);
+void	launch_env_builtin(char **cmd_array, int *token_array, t_command *command);
+int	check_for_builtin(char **cmd_array, int *token_array);
+void	ft_free_command(t_command *command, char *path, char **args);
+void	launch_builtin(char **cmd_array, int *token_array, t_command *command, int cmd_num);
+char	*get_thepath(char **cmd_arg, int *tokens, t_env *env);
+char	**split_path(t_env *env);
+char	**command_args(char **c_args, int *tokens, t_env *env, char *cmd);
+void	close_fd(int fd);
+void	execute_commands(char *path, char **args, int cmd_nb, t_command *command);
+char	**transform_envp(t_env *env);
+void	close_all(int pipe_fd[2][2], int cmd_nb);
+void	command_initial(char *op_com, t_env **env);
+void	handle_redirections(t_command *exec, int cmd_nb);
 #endif

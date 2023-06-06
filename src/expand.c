@@ -6,7 +6,7 @@
 /*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/04 22:32:10 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/05 00:42:27 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static char	*replace_env_var(char *token, t_env *env)
 		change_value_state(&state, token[i]);
 		if (token[i] == '$' && state != 1 && token[i + 1] != 0) 
 		{
-			printf("Before operation, token = %s, length = %zu\n", token, strlen(token));
+			//printf("Before operation, token = %s, length = %zu\n", token, strlen(token));
 
 			if (token[i + 1] == '?')
 			{
@@ -88,14 +88,12 @@ static char	*replace_env_var(char *token, t_env *env)
 			else if (!ft_isalnum(token[i + 1]) && token[i + 1] != '_')
 				token = replace_var_wrongname(token, &i);
 
-			printf("After operation, token = %s, length = %zu\n", token, strlen(token));
+			//printf("After operation, token = %s, length = %zu\n", token, strlen(token));
 		}
 		i++;
 	}
 	return (token);
 }
-
-
 
 void	expand_env_vars(char **cmd, int *tokens, t_env *env)
 {
