@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/06 08:12:36 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:25:46 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ int main(int ac, char **av, char **envp)
         // free_command(command);
         
     }
-    return 0;
+    return (exit_status);
 }
 
 

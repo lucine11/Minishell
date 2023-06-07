@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+         #
+#    By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/10 15:35:55 by lahamoun          #+#    #+#              #
-#    Updated: 2023/06/06 01:51:29 by lahamoun         ###   ########.fr        #
+#    Updated: 2023/06/07 02:28:23 by lahamoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 NAME = minishell
 
