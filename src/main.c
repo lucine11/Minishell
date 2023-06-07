@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:07:45 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/07 02:25:46 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/07 02:46:01 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int main(int ac, char **av, char **envp)
     (void)av;
 
     char *line;
-    //t_command *command;
+    t_command *command;
     t_env *env_list;
     t_token *tokens;
     
@@ -177,26 +177,27 @@ int main(int ac, char **av, char **envp)
         tokens = breakdown_line(line);
         if(!tokens)
             printf("error");
-        command_initial(line, &env_list);
-        // if (!command) 
-        // {
-        //     printf("Command initialization failed.\n");
-        //     continue;
-        // }
-        // printf("---------->[command segments test]<---------\n");
-        // print_command_segments(command->command_segments);
-        // printf("---------->[token types test]<---------\n");
-        // print_token_types(command->token_types);
+        //command_initial(line, &env_list);
+        command =  command_ini(line, env_list);
+        if (!command) 
+        {
+            printf("Command initialization failed.\n");
+            continue;
+        }
+        printf("---------->[command segments test]<---------\n");
+        print_command_segments(command->command_segments);
+        printf("---------->[token types test]<---------\n");
+        print_token_types(command->token_types);
 
-        // handle heredocs
-        //heredoc_handler(command);
+        
+       // heredoc_handler(command);
 
         //handle_redirections(command);
-        // if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
-        // {
-        //     printf("Executing builtin.\n");
-        // } 
-        // free_command(command);
+        if (execute_builtin(command->original_commands, command->original_tokens, env_list)) 
+        {
+            printf("Executing builtin.\n");
+        } 
+        free_command(command);
         
     }
     return (exit_status);
