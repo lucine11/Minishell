@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   del_quotes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 10:39:43 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/01 17:19:52 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/07 08:39:38 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*remove_them(char *token, int *i)
 
 	quote = token[*i];
 	j = *i + 1;
-	while (token[j] != quote)
+	while (token[j] && token[j] != quote)
 		j++;
 	tmp[0] = ft_substr(token, 0, *i);
 	tmp[1] = ft_substr(token, *i + 1, j - *i - 1);

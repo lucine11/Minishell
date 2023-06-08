@@ -6,7 +6,7 @@
 /*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 02:17:00 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/07 02:44:58 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/08 07:49:24 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static char	*replace_var(char *token, int *start_idx, t_env *env)
 	suffix = ft_substr(token, end_var_name, 1000);
 	free(token);
 	token = ft_strjoin_many(3, prefix, value, suffix);
-	*start_idx = ft_strlen(prefix) + ft_strlen(value);
+	// *start_idx = ft_strlen(prefix) + ft_strlen(value);
+	*start_idx = end_var_name;
 	free(prefix);
 	free(value);
 	free(suffix);
@@ -43,6 +44,7 @@ static char	*replace_var(char *token, int *start_idx, t_env *env)
 
 char	*replace_var_wrongname(char *tok, int *i)
 {
+	
 	char	*tmp = ft_substr(tok, *i + 2, ft_strlen(tok) - *i - 2);
 	char	*new_tok = ft_strjoin_char(ft_substr(tok, 0, *i), tmp, ' ');
 	free(tok);
@@ -71,26 +73,31 @@ static char	*replace_env_var(char *token, t_env *env)
 	while (token[i])
 	{
 		change_value_state(&state, token[i]);
-		if (token[i] == '$' && state != 1 && token[i + 1] != 0) 
+		if (token[i] == '$' && state != 1 && token[i + 1]) 
 		{
 			//printf("Before operation, token = %s, length = %zu\n", token, strlen(token));
-
 			if (token[i + 1] == '?')
 			{
 				token = replace_var_exitcode(token, &i);
+				continue;
 			}
-			else if (ft_isalpha(token[i + 1]) || token[i + 1] == '_') 
-			{
+			// }
+			// else if (token[i + 1] == '$')
+			// {
+			// 	i += 1 - 1;
+			// 	token = replace_var_wrongname(token, &i);
+			// 	continue;
+			// }
+			 if (ft_isalpha(token[i + 1]) || token[i + 1] == '_') 
 				token = replace_var(token, &i, env);
-				if (!token[i] || token[i] == '$' || token[i] == '"' || token[i] == '\'')
-					i--;
-			}
 			else if (!ft_isalnum(token[i + 1]) && token[i + 1] != '_')
 				token = replace_var_wrongname(token, &i);
-
+			else
+				i++;
 			//printf("After operation, token = %s, length = %zu\n", token, strlen(token));
 		}
-		i++;
+		else
+			i++;
 	}
 	return (token);
 }

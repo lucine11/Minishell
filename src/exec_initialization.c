@@ -98,7 +98,6 @@ void	command_initial(char *op_com, t_env **env)
 	command->env = env;
 	command->com_count = com_cnt(command->original_commands, command->original_tokens);
 	command->hold_pid = malloc(sizeof(int) * (command->com_count + 1));
-	command->hold_pid = malloc(sizeof(int) * (command->com_count + 1));
 	if (command->hold_pid)
 	{
 		i = 0;

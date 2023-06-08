@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_builtins.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lahamoun < lahamoun@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: lahamoun <lahamoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 07:20:11 by lahamoun          #+#    #+#             */
-/*   Updated: 2023/06/06 08:09:49 by lahamoun         ###   ########.fr       */
+/*   Updated: 2023/06/07 07:00:22 by lahamoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ void	launch_builtin(char **cmd_array, int *token_array, t_command *command, int 
 		close_fd(command->pipeline[cmd_num % 2][0]);
 		//close_heredocs(command->heredoc_fd);
 		ft_list_clear(command->env);
-		ft_free_command(command, NULL, NULL);
+		//ft_free_command(command, NULL, NULL);
 		exit(exit_status);
 	}
 }
